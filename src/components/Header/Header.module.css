@@ -1,0 +1,44 @@
+.header {
+  grid-column: 2/5;
+  display: flex;
+  align-content: center;
+  height: 7.2rem;
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+  margin-top: 3.2rem;
+}
+
+.header ul {
+  height: 100%;
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.header li {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.3rem;
+  line-height: 2.5rem;
+  /* identical to box height, or 192% */
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.link {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 700;
+  margin-right: 3.4rem;
+}
+
+.logo {
+  align-self: center;
+}
