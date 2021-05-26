@@ -1,0 +1,47 @@
+.Brand {
+  grid-column: 2/5;
+  height: 588px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 7rem;
+  margin-bottom: 20rem;
+}
+
+.Brand img {
+  grid-column: 2/-1;
+  width: 44rem;
+  height: 48rem;
+  border-radius: 8px;
+  align-self: center;
+}
+
+.Brand aside {
+  grid-column: 1/2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  align-self: center;
+}
+
+.Brand p {
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+  color: #000000;
+  opacity: 0.5;
+}
+
+.Brand h1 {
+  font-weight: 700;
+  font-size: 4rem;
+  line-height: 4.4rem;
+  letter-spacing: 1.43px;
+  text-transform: uppercase;
+  color: #000000;
+  margin-bottom: 3.2rem;
+}
+
+h1 span {
+  color: #d87d4a;
+}

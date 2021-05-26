@@ -1,0 +1,72 @@
+.footer {
+  grid-column: 1/-1;
+  background-color: #000000;
+  display: grid;
+  grid-template-columns: 16.5rem 1fr 1fr 16.5rem;
+  height: 36.5rem;
+}
+
+.left {
+  grid-column: 2/3;
+  margin-top: 7.5rem;
+}
+
+.left:first-of-type p {
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+  color: #ffffff;
+  opacity: 0.5;
+  margin-bottom: 5.6rem;
+  margin-top: 3.6rem;
+}
+
+.copy {
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+  opacity: 0.5;
+}
+
+.right {
+  grid-column: 3/4;
+  margin-top: 7.2rem;
+}
+
+nav ul {
+  height: 100%;
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 10.75rem;
+}
+
+nav li {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.3rem;
+  line-height: 2.5rem;
+  /* identical to box height, or 192% */
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.link {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 700;
+  margin-right: 3.4rem;
+}
+
+.icons {
+  text-align: right;
+  margin-right: 3.4rem;
+}
+
+.icons img:not(:last-child) {
+  margin-right: 1.6rem;
+}

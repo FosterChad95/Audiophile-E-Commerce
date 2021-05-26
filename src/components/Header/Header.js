@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./Header.module.css";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { ReactComponent as ReactLogo } from "../../assets/shared/desktop/logo.svg";
 import CartButton from "../Cart/CartButton";
 
@@ -12,24 +12,36 @@ const Header = () => {
         <nav>
           <ul>
             <li>
-              <Link to="/" className={classes.link}>
+              <NavLink to="/" className={classes.link}>
                 Home
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/headphones" className={classes.link}>
+              <NavLink
+                to="/headphones"
+                className={classes.link}
+                activeClassName={classes.active}
+              >
                 Headphones
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/speakers" className={classes.link}>
+              <NavLink
+                to="/speakers"
+                className={classes.link}
+                activeClassName={classes.active}
+              >
                 Speakers
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/earphones" className={classes.link}>
+              <NavLink
+                to="/earphones"
+                className={classes.link}
+                activeClassName={classes.active}
+              >
                 Earphones
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </nav>

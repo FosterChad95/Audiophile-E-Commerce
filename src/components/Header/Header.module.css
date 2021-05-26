@@ -52,3 +52,7 @@
   background-color: #ffffff;
   opacity: 0.2;
 }
+
+.active {
+  background-color: #d87d4a;
+}
