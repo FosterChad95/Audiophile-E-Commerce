@@ -4,10 +4,11 @@
   align-content: center;
   height: 7.2rem;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-content: center;
   align-items: center;
   margin-top: 3.2rem;
+  position: relative;
 }
 
 .header ul {
@@ -41,4 +42,13 @@
 
 .logo {
   align-self: center;
+}
+
+.line {
+  position: absolute;
+  width: 100%;
+  top: 9rem;
+  height: 1px;
+  background-color: #ffffff;
+  opacity: 0.2;
 }

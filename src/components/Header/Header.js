@@ -6,34 +6,37 @@ import CartButton from "../Cart/CartButton";
 
 const Header = () => {
   return (
-    <div className={classes.header}>
-      <ReactLogo className={classes.logo} />
-      <nav>
-        <ul>
-          <li>
-            <Link to="/" className={classes.link}>
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link to="/headphones" className={classes.link}>
-              Headphones
-            </Link>
-          </li>
-          <li>
-            <Link to="/speakers" className={classes.link}>
-              Speakers
-            </Link>
-          </li>
-          <li>
-            <Link to="/earphones" className={classes.link}>
-              Earphones
-            </Link>
-          </li>
-        </ul>
-      </nav>
-      <CartButton />
-    </div>
+    <React.Fragment>
+      <div className={classes.header}>
+        <ReactLogo className={classes.logo} />
+        <nav>
+          <ul>
+            <li>
+              <Link to="/" className={classes.link}>
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link to="/headphones" className={classes.link}>
+                Headphones
+              </Link>
+            </li>
+            <li>
+              <Link to="/speakers" className={classes.link}>
+                Speakers
+              </Link>
+            </li>
+            <li>
+              <Link to="/earphones" className={classes.link}>
+                Earphones
+              </Link>
+            </li>
+          </ul>
+        </nav>
+        <CartButton />
+        <span className={classes.line}>&nbsp;</span>
+      </div>
+    </React.Fragment>
   );
 };
 

@@ -5,6 +5,7 @@ import Home from "./pages/Home/Home";
 import Speakers from "./pages/Speakers/Speakers";
 import Earphones from "./pages/Earphones/Earphones";
 import classes from "./App.module.css";
+import Cart from "./pages/Cart/Cart";
 
 const App = () => {
   return (
@@ -18,6 +19,9 @@ const App = () => {
         </Route>
         <Route path="/earphones">
           <Earphones />
+        </Route>
+        <Route path="/cart">
+          <Cart />
         </Route>
         <Route path="/">
           <Home />

@@ -1,0 +1,45 @@
+.MainHead {
+  grid-row: 2/-1;
+  align-self: center;
+  grid-column: 2/4;
+  width: 56%;
+}
+
+.MainHead h3 {
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1.9rem;
+  letter-spacing: 1rem;
+  text-transform: uppercase;
+  color: #ffffff;
+  opacity: 0.5;
+  mix-blend-mode: normal;
+  margin-bottom: 2rem;
+}
+
+.MainHead h1 {
+  font-weight: 700;
+  font-size: 5.6rem;
+  line-height: 5.8rem;
+  letter-spacing: 2px;
+  color: #ffffff;
+  margin-bottom: 2rem;
+}
+
+.MainHead p {
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 2.5rem;
+  font-style: normal;
+
+  color: #ffffff;
+  opacity: 0.75;
+  mix-blend-mode: normal;
+}
+
+.link {
+  font-weight: 700;
+  font-size: 1.3rem;
+  line-height: 1.76rem;
+  letter-spacing: 1px;
+}

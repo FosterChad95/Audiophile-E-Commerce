@@ -5,4 +5,8 @@
   grid-column: 1/-1;
   display: grid;
   grid-template-columns: 16.5rem repeat(3, 1fr) 16.5rem;
+  grid-template-rows: 9.6rem 1fr;
+  background-image: url(../../assets/home/desktop/image-hero.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
