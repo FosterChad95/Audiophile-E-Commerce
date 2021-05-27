@@ -6,6 +6,7 @@ const CategoryTop = () => {
   return (
     <div className={classes.CategoryTop}>
       <Header />
+      <h1>HEADPHONES</h1>
     </div>
   );
 };

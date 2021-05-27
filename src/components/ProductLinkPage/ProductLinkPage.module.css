@@ -1,0 +1,54 @@
+.Product {
+  grid-column: 2/5;
+  width: 100%;
+  height: 56rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.Product h3 {
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1.91rem;
+  letter-spacing: 1rem;
+  color: #d87d4a;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.Product h1 {
+  font-weight: 700;
+  font-size: 4rem;
+  line-height: 4.4rem;
+  letter-spacing: 1.43px;
+  text-transform: uppercase;
+  margin-bottom: 3.2rem;
+}
+
+.Product p {
+  font-weight: 500;
+  color: #000000;
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+  opacity: 0.5;
+  margin-bottom: 2rem;
+}
+
+.Product aside {
+  grid-column: 2/-1;
+  align-self: center;
+  height: 44.5rem;
+  width: 45rem;
+  text-align: left;
+  width: 34.3rem;
+  margin-left: 12.5rem;
+}
+
+.imageContainer {
+  grid-column: 1/2;
+}
+
+.Product img {
+  height: 56rem;
+  width: 54rem;
+}
