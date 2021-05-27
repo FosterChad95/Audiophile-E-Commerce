@@ -12,7 +12,7 @@ const CategoryLink = (props) => {
       <div className={classes.category}>
         <img src={headphoneImage} alt="headphones" />
         <h2>Headphones</h2>
-        <Link className={classes.link}>
+        <Link to="/headphones" className={classes.link}>
           <span>Shop</span>
           <ReactIcon className={classes.icon} />
         </Link>
@@ -20,15 +20,15 @@ const CategoryLink = (props) => {
       <div className={classes.category}>
         <img src={speakerImage} alt="Speakers" />
         <h2>Speakers</h2>
-        <Link className={classes.link}>
+        <Link to="/speakers" className={classes.link}>
           <span>Shop</span>
           <ReactIcon className={classes.icon} />
         </Link>
       </div>
       <div className={classes.category}>
         <img src={earphoneImage} alt="Earphones" />
-        <h2>Headphones</h2>
-        <Link className={classes.link}>
+        <h2>Earphones</h2>
+        <Link to="earphones" className={classes.link}>
           <span>Shop</span>
           <ReactIcon className={classes.icon} />
         </Link>

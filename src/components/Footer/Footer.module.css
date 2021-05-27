@@ -9,6 +9,7 @@
 .left {
   grid-column: 2/3;
   margin-top: 7.5rem;
+  margin-left: -5rem;
 }
 
 .left:first-of-type p {
@@ -32,6 +33,7 @@
 .right {
   grid-column: 3/4;
   margin-top: 7.2rem;
+  margin-right: -5rem;
 }
 
 nav ul {
@@ -41,6 +43,7 @@ nav ul {
   padding: 0;
   margin: 0;
   margin-bottom: 10.75rem;
+  margin-left: 5rem;
 }
 
 nav li {
