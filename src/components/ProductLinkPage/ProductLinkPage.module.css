@@ -51,4 +51,5 @@
 .Product img {
   height: 56rem;
   width: 54rem;
+  border-radius: 8px;
 }
