@@ -1,0 +1,18 @@
+.modal {
+  grid-column: 1/-1;
+  align-self: center;
+  justify-self: center;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-transform: uppercase;
+  padding: 10rem;
+  border: 2px solid black;
+  border-radius: 1rem;
+}
+
+.modal h1 {
+  margin-bottom: 5rem;
+}
