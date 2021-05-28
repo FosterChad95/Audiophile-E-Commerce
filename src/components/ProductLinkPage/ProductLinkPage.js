@@ -1,22 +1,9 @@
 import React from "react";
 import Button from "../../components/UI/Button";
 import classes from "./ProductLinkPage.module.css";
-import useWindow from "../../hooks/useWindow";
 
-const ProductLinkPage = ({ name, newOne, description, images }) => {
-  const imageurl = useWindow();
-
-  console.log(images);
-
-  let image;
-  if (imageurl > 1200) {
-    image = "desktop";
-  } else if (imageurl > 700 && imageurl < 1200) {
-    image = "tablet";
-  } else {
-    image = "mobile";
-  }
-
+const ProductLinkPage = ({ name, newOne, description, image }) => {
+  console.log(image);
   return (
     <>
       <div className={classes.Product}>
