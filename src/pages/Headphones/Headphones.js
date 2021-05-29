@@ -4,9 +4,11 @@ import CategoryTop from "../../components/CategoryTop/CategoryTop";
 import ProductLinkPage from "../../components/ProductLinkPage/ProductLinkPage";
 import LoadingSpinner from "../../components/UI/LoadingSpinner";
 import ErrorModal from "../../components/UI/ErrorModal";
-import { getHeadphones } from "../../lib/api";
+import { getData } from "../../lib/api";
 import useHttp from "../../hooks/useHttp";
-import useWindow from "../../hooks/useWindow";
+import CategoryLink from "../../components/CategoryLink/CategoryLink";
+import BrandDescription from "../../components/BrandDescription/BrandDescription";
+import Footer from "../../components/Footer/Footer";
 
 const Headphones = () => {
   const {
@@ -14,25 +16,13 @@ const Headphones = () => {
     status,
     data: loadedHeadpones,
     error,
-  } = useHttp(getHeadphones, true);
+  } = useHttp(getData, true);
 
   useEffect(() => {
-    sendRequest();
+    sendRequest("headphones");
 
-    return () => sendRequest();
+    return () => sendRequest("headphones");
   }, [sendRequest]);
-
-  const imageurl = useWindow();
-  let im;
-  if (imageurl > 1200) {
-    im = "desktop";
-  } else if (imageurl > 700 && imageurl < 1200) {
-    im = "tablet";
-  } else {
-    im = "mobile";
-  }
-
-  console.log(im);
 
   if (status === "pending") {
     return (
@@ -50,16 +40,19 @@ const Headphones = () => {
 
   return (
     <>
-      <CategoryTop />
+      <CategoryTop heading="HEADPHONES" />
       {loadedHeadpones.map((data, index) => (
         <ProductLinkPage
           key={data.id}
+          id={data.id}
           name={data.name}
           newOne={data.new}
           description={data.description}
-          image={data.image.im}
         />
       ))}
+      <CategoryLink />
+      <BrandDescription />
+      <Footer />
     </>
   );
 };

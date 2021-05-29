@@ -1,6 +1,6 @@
 const FIREBASE_DOMAIN = "https://audiophile-50083-default-rtdb.firebaseio.com";
 
-export async function getHeadphones() {
+export async function getData(type) {
   const response = await fetch(`${FIREBASE_DOMAIN}/.json`);
 
   const data = await response.json();
@@ -20,5 +20,5 @@ export async function getHeadphones() {
     items.push(itemsObj);
   }
 
-  return items.filter((item) => item.category === "headphones");
+  return items.filter((el) => el.category === type);
 }

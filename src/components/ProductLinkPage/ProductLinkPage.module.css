@@ -6,6 +6,10 @@
   grid-template-columns: 1fr 1fr;
 }
 
+.Product:not(:last-child) {
+  margin-bottom: 16rem;
+}
+
 .Product h3 {
   font-weight: 400;
   font-size: 1.4rem;
@@ -34,11 +38,9 @@
   margin-bottom: 2rem;
 }
 
-.Product aside {
+.Product .asideright {
   grid-column: 2/-1;
   align-self: center;
-  height: 44.5rem;
-  width: 45rem;
   text-align: left;
   width: 34.3rem;
   margin-left: 12.5rem;
@@ -52,4 +54,19 @@
   height: 56rem;
   width: 54rem;
   border-radius: 8px;
+}
+
+.imageContainerOpp {
+  grid-column: 2/-1;
+  grid-row: 1/2;
+}
+
+.Product .asideleft {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  align-self: center;
+  margin-right: 12.5rem;
+
+  width: 34.3rem;
+  text-align: left;
 }
