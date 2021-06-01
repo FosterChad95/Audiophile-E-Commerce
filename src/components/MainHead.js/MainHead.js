@@ -12,7 +12,7 @@ const MainHead = () => {
           Experience natural, lifelike audio and exceptional build quality made
           for the passionate music enthusiast.
         </p>
-        <Button>See Product</Button>
+        <Button to="product-detail/XX99">See Product</Button>
       </div>
     </React.Fragment>
   );

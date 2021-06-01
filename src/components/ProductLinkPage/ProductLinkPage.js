@@ -1,7 +1,18 @@
 import React from "react";
 import Button from "../../components/UI/Button";
 import classes from "./ProductLinkPage.module.css";
-const ProductLinkPage = ({ name, newOne, description, id, image }) => {
+const ProductLinkPage = ({
+  name,
+  newOne,
+  description,
+  id,
+  image,
+  onClicked,
+}) => {
+  const onClickHandler = () => {
+    onClicked(name);
+  };
+
   const { desktop } = image;
 
   if (id % 2 !== 0) {
@@ -15,7 +26,9 @@ const ProductLinkPage = ({ name, newOne, description, id, image }) => {
             {newOne && <h3>New Product</h3>}
             <h1>{name}</h1>
             <p>{description}</p>
-            <Button>SEE PRODUCT</Button>
+            <Button onClick={onClickHandler} to={`product-detail/${name}`}>
+              SEE PRODUCT
+            </Button>
           </aside>
         </div>
       </>
@@ -31,7 +44,10 @@ const ProductLinkPage = ({ name, newOne, description, id, image }) => {
             {newOne && <h3>New Product</h3>}
             <h1>{name}</h1>
             <p>{description}</p>
-            <Button>SEE PRODUCT</Button>
+
+            <Button onClick={onClickHandler} to={`product-detail/${name}`}>
+              SEE PRODUCT
+            </Button>
           </aside>
         </div>
       </>

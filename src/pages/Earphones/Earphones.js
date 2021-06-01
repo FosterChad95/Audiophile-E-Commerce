@@ -9,7 +9,11 @@ import CategoryLink from "../../components/CategoryLink/CategoryLink";
 import BrandDescription from "../../components/BrandDescription/BrandDescription";
 import Footer from "../../components/Footer/Footer";
 
-const Earphones = () => {
+const Earphones = ({ earphoneData }) => {
+  const onClickHandler = (earphone) => {
+    earphoneData(earphone);
+  };
+
   const {
     sendRequest,
     status,
@@ -48,6 +52,7 @@ const Earphones = () => {
           newOne={data.new}
           description={data.description}
           image={data.image}
+          onClicked={onClickHandler}
         />
       ))}
       <CategoryLink />
