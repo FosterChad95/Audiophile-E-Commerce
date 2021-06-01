@@ -48,6 +48,7 @@ const Headphones = () => {
           name={data.name}
           newOne={data.new}
           description={data.description}
+          image={data.image}
         />
       ))}
       <CategoryLink />

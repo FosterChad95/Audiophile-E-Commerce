@@ -1,28 +1,15 @@
 import React from "react";
 import Button from "../../components/UI/Button";
 import classes from "./ProductLinkPage.module.css";
-
 const ProductLinkPage = ({ name, newOne, description, id, image }) => {
-  let img;
-  console.log(image);
+  const { desktop } = image;
 
-  if (name === "XX59 Headphones") {
-    img = XX59;
-  } else if (name === "XX99 Mark I Headphones") {
-    img = XX991;
-  } else if (name === "XX99 Mark II Headphones") {
-    img = XX992;
-  } else if (name === "ZX7 Speaker") {
-    img = ZX7;
-  } else {
-    img = ZX9;
-  }
   if (id % 2 !== 0) {
     return (
       <>
         <div className={classes.Product}>
           <div className={classes.imageContainerOpp}>
-            <img src={img} alt={name} />
+            <img src={desktop} alt={name} />
           </div>
           <aside className={classes.asideleft}>
             {newOne && <h3>New Product</h3>}
@@ -38,7 +25,7 @@ const ProductLinkPage = ({ name, newOne, description, id, image }) => {
       <>
         <div className={classes.Product}>
           <div className="imageContainer">
-            <img src={img} alt={name} />
+            <img src={desktop} alt={name} />
           </div>
           <aside className={classes.asideright}>
             {newOne && <h3>New Product</h3>}
