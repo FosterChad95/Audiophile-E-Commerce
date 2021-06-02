@@ -1,0 +1,56 @@
+.middle {
+  grid-column: 2/5;
+  display: grid;
+  grid-template-columns: 63.5rem 25rem;
+  grid-column-gap: 12.5rem;
+}
+
+.middle h1 {
+  font-weight: 700;
+  font-size: 3.2rem;
+  letter-spacing: 1.14px;
+  line-height: 3.6rem;
+  color: #000000;
+  margin-bottom: 3.2rem;
+  text-transform: uppercase;
+}
+
+.middle p {
+  opacity: 0.5;
+  color: #000000;
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+}
+
+.middle p:first-of-type {
+  margin-bottom: 3.2rem;
+}
+
+.includes ul {
+  list-style: none;
+}
+
+.includes li:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.units {
+  display: flex;
+  justify-content: space-around;
+}
+
+.amt {
+  font-weight: 700;
+  color: #d87d4a;
+  line-height: 2.5rem;
+  font-size: 1.5rem;
+}
+
+.item {
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+  color: #000000;
+  opacity: 0.5;
+}

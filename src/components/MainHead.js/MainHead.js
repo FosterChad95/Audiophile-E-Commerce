@@ -12,7 +12,9 @@ const MainHead = () => {
           Experience natural, lifelike audio and exceptional build quality made
           for the passionate music enthusiast.
         </p>
-        <Button to="product-detail/XX99">See Product</Button>
+        <Button to="/product-detail/XX99%20Mark%20II%20Headphones">
+          See Product
+        </Button>
       </div>
     </React.Fragment>
   );

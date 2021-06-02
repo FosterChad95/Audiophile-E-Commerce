@@ -5,12 +5,12 @@ import ErrorModal from "../../components/UI/ErrorModal";
 import LoadingSpinner from "../../components/UI/LoadingSpinner";
 import { getSingleProduct } from "../../lib/api";
 import useHttp from "../../hooks/useHttp";
-import Button from "../../components/UI/Button";
 import ProductItem from "../../components/ProductItem/ProductItem";
+import { Link } from "react-router-dom";
+import MiddleDetail from "../../components/MiddleDetail/MiddleDetail";
 
 const ProductDetail = ({ product }) => {
   const { sendRequest, status, data, error } = useHttp(getSingleProduct, true);
-
   useEffect(() => {
     sendRequest(product);
 
@@ -25,7 +25,19 @@ const ProductDetail = ({ product }) => {
     );
   }
 
-  const [{ name, features, image, new: newOne, description, id }] = data;
+  const [
+    {
+      name,
+      features,
+      image,
+      new: newOne,
+      description,
+      id,
+      category,
+      price,
+      includes,
+    },
+  ] = data;
 
   if (error) {
     return (
@@ -39,14 +51,21 @@ const ProductDetail = ({ product }) => {
         <div className={classes.top}>
           <Header />
         </div>
-        <h5>Go Back</h5>
+        <Link to={`/${category}`} className={classes.back}>
+          Go Back
+        </Link>
         <ProductItem
           id={id}
           name={name}
-          features={features}
           image={image}
           newOne={newOne}
           description={description}
+          price={price}
+        />
+        <MiddleDetail
+          includedItem={includes.map((item) => item.item)}
+          includedAmount={includes.map((quant) => quant.quantity)}
+          features={features}
         />
       </>
     );

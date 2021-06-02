@@ -4,7 +4,7 @@
   height: 56rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin-top: 16rem;
+  margin-top: 5.6rem;
 }
 
 .Product:not(:last-child) {
@@ -43,7 +43,7 @@
   grid-column: 2/-1;
   align-self: center;
   text-align: left;
-  width: 34.3rem;
+  width: 44.5rem;
   margin-left: 12.5rem;
 }
 
@@ -52,8 +52,8 @@
 }
 
 .Product img {
-  height: 56rem;
-  width: 54rem;
+  height: 46rem;
+  width: 44rem;
   border-radius: 8px;
 }
 
@@ -70,4 +70,13 @@
 
   width: 34.3rem;
   text-align: left;
+}
+
+.Product .price {
+  font-weight: 700;
+  font-size: 1.8rem;
+  letter-spacing: 1.29px;
+  line-height: 2.5rem;
+  color: #000000;
+  opacity: 1;
 }

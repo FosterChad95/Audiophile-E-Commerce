@@ -1,24 +1,40 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
+import Button from "./Button";
 import CartContext from "../../store/CartProvider";
+import classes from "./NumberInput.module.css";
 
-const NumberInput = ({ item }) => {
+const NumberInput = () => {
   const cartCtx = useContext(CartContext);
+  const [value, setValue] = useState(1);
 
-  const [quantity, setQuantity] = useState(initialState);
-
-  const cartItemRemoveHandler = (id) => {
-    cartCtx.removeItem(id);
+  const addItem = () => {
+    if (value < 1) return;
+    setValue((prevVal) => prevVal + 1);
   };
 
-  const cartItemAddHandler = (item) => {
-    cartCtx.addItem(item);
+  const removeItem = () => {
+    if (value < 1) return;
+    setValue((prevVal) => prevVal - 1);
+  };
+
+  const handleSubmitAmount = () => {
+    cartCtx.amount = value;
   };
 
   return (
     <>
-      <button className="minus">-</button>
-      <input type="number" min={1} max={10} />
-      <button className="plus">+</button>
+      <div className={classes.container}>
+        <button className={classes.toggle} onClick={removeItem}>
+          -
+        </button>
+        <span className={classes.amount}>{value}</span>
+        <button className={classes.toggle} onClick={addItem}>
+          +
+        </button>
+        <Button to={"/"} onClick={handleSubmitAmount}>
+          Add to Cart
+        </Button>
+      </div>
     </>
   );
 };

@@ -4,3 +4,14 @@
   display: grid;
   grid-template-columns: 16.5rem repeat(3, 1fr) 16.5rem;
 }
+
+.back {
+  grid-column: 2/3;
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+  opacity: 0.5;
+  color: #000000;
+  margin-top: 7.9rem;
+  text-decoration: none;
+}

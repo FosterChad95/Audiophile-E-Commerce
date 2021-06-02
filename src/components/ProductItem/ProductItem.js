@@ -1,9 +1,10 @@
 import React from "react";
 import classes from "./ProductItem.module.css";
-import Button from "../UI/Button";
+
 import NumberInput from "../UI/NumberInput";
-const ProductItem = ({ name, description, newOne, image, data }) => {
+const ProductItem = ({ name, description, newOne, image, data, price }) => {
   const { desktop } = image;
+
   return (
     <>
       <div className={classes.Product}>
@@ -14,8 +15,10 @@ const ProductItem = ({ name, description, newOne, image, data }) => {
           {newOne && <h3>New Product</h3>}
           <h1>{name}</h1>
           <p>{description}</p>
+          <p className={classes.price}>{`$ ${price.toLocaleString(
+            "en-US"
+          )}`}</p>
           <NumberInput item={data} />
-          <Button to={"/cart"}>Add to Cart</Button>
         </aside>
       </div>
     </>
