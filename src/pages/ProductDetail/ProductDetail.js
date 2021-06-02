@@ -25,7 +25,7 @@ const ProductDetail = ({ product }) => {
     );
   }
 
-  const [{ name, features, image, new: newOne, description }] = data;
+  const [{ name, features, image, new: newOne, description, id }] = data;
 
   if (error) {
     return (
@@ -41,6 +41,7 @@ const ProductDetail = ({ product }) => {
         </div>
         <h5>Go Back</h5>
         <ProductItem
+          id={id}
           name={name}
           features={features}
           image={image}

@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./ProductItem.module.css";
 import Button from "../UI/Button";
 import NumberInput from "../UI/NumberInput";
-const ProductItem = ({ name, description, newOne, image }) => {
+const ProductItem = ({ name, description, newOne, image, data }) => {
   const { desktop } = image;
   return (
     <>
@@ -14,7 +14,7 @@ const ProductItem = ({ name, description, newOne, image }) => {
           {newOne && <h3>New Product</h3>}
           <h1>{name}</h1>
           <p>{description}</p>
-          <NumberInput />
+          <NumberInput item={data} />
           <Button to={"/cart"}>Add to Cart</Button>
         </aside>
       </div>
