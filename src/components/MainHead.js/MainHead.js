@@ -1,8 +1,15 @@
 import classes from "./MainHead.module.css";
 import Button from "../../components/UI/Button";
-import React from "react";
+import React, { useContext } from "react";
+import { DataContext } from "../../store/DataProvider";
 
 const MainHead = () => {
+  const dataCtx = useContext(DataContext);
+
+  const linkClickHandler = () => {
+    dataCtx.nameChange("XX99 Mark II Headphones");
+  };
+
   return (
     <React.Fragment>
       <div className={classes.MainHead}>
@@ -12,7 +19,10 @@ const MainHead = () => {
           Experience natural, lifelike audio and exceptional build quality made
           for the passionate music enthusiast.
         </p>
-        <Button to="/product-detail/XX99%20Mark%20II%20Headphones">
+        <Button
+          onClick={linkClickHandler}
+          to="product-detail/XX99 Mark II Headphones"
+        >
           See Product
         </Button>
       </div>

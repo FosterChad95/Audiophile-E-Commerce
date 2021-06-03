@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { Switch, Route } from "react-router-dom";
 import Headphones from "./pages/Headphones/Headphones";
 import Home from "./pages/Home/Home";
@@ -7,28 +7,25 @@ import Earphones from "./pages/Earphones/Earphones";
 import classes from "./App.module.css";
 import Cart from "./pages/Cart/Cart";
 import ProductDetail from "./pages/ProductDetail/ProductDetail";
+import { DataContext } from "./store/DataProvider";
 
 const App = () => {
-  const [name, setName] = useState("");
-
-  const buttonClickHandler = (e) => {
-    setName(e);
-  };
+  const dataCtx = useContext(DataContext);
 
   return (
     <div className={classes.app}>
       <Switch>
         <Route path="/product-detail/:productId">
-          <ProductDetail product={name} />
+          <ProductDetail product={dataCtx.name} />
         </Route>
         <Route path="/headphones">
-          <Headphones headphoneData={buttonClickHandler} />
+          <Headphones />
         </Route>
         <Route path="/speakers">
-          <Speakers speakerData={buttonClickHandler} />
+          <Speakers />
         </Route>
         <Route path="/earphones">
-          <Earphones earphoneData={buttonClickHandler} />
+          <Earphones />
         </Route>
         <Route path="/cart">
           <Cart />

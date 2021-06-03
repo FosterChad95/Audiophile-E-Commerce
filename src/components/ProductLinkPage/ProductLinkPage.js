@@ -1,17 +1,10 @@
 import React from "react";
 import Button from "../../components/UI/Button";
 import classes from "./ProductLinkPage.module.css";
-const ProductLinkPage = ({
-  name,
-  newOne,
-  description,
-  id,
-  image,
-  onClicked,
-}) => {
-  const onClickHandler = () => {
-    onClicked(name);
-  };
+import { DataContext } from "../../store/DataProvider";
+import { useContext } from "react";
+const ProductLinkPage = ({ name, newOne, description, id, image }) => {
+  const dataCtx = useContext(DataContext);
 
   const { desktop } = image;
 
@@ -26,7 +19,10 @@ const ProductLinkPage = ({
             {newOne && <h3>New Product</h3>}
             <h1>{name}</h1>
             <p>{description}</p>
-            <Button onClick={onClickHandler} to={`product-detail/${name}`}>
+            <Button
+              onClick={() => dataCtx.nameChange(name)}
+              to={`product-detail/${name}`}
+            >
               SEE PRODUCT
             </Button>
           </aside>
@@ -45,7 +41,10 @@ const ProductLinkPage = ({
             <h1>{name}</h1>
             <p>{description}</p>
 
-            <Button onClick={onClickHandler} to={`product-detail/${name}`}>
+            <Button
+              onClick={() => dataCtx.nameChange(name)}
+              to={`product-detail/${name}`}
+            >
               SEE PRODUCT
             </Button>
           </aside>

@@ -10,11 +10,7 @@ import CategoryLink from "../../components/CategoryLink/CategoryLink";
 import BrandDescription from "../../components/BrandDescription/BrandDescription";
 import Footer from "../../components/Footer/Footer";
 
-const Headphones = ({ headphoneData }) => {
-  const onClickHandler = (name) => {
-    headphoneData(name);
-  };
-
+const Headphones = () => {
   const {
     sendRequest,
     status,
@@ -53,7 +49,6 @@ const Headphones = ({ headphoneData }) => {
           newOne={data.new}
           description={data.description}
           image={data.image}
-          onClicked={onClickHandler}
         />
       ))}
       <CategoryLink />
