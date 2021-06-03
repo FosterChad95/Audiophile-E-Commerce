@@ -1,5 +1,5 @@
 import classes from "./ProductDetail.module.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Header from "../../components/Header/Header";
 import ErrorModal from "../../components/UI/ErrorModal";
 import LoadingSpinner from "../../components/UI/LoadingSpinner";

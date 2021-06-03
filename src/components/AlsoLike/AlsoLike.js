@@ -3,10 +3,6 @@ import { DataContext } from "../../store/DataProvider";
 import ErrorModal from "../UI/ErrorModal";
 import LoadingSpinner from "../UI/LoadingSpinner";
 
-function randomNum(length) {
-  return Math.floor(Math.random() * length) + 1;
-}
-
 const AlsoLike = ({ name }) => {
   const dataCtx = useContext(DataContext);
   if (dataCtx.status === "pending") {
@@ -26,9 +22,9 @@ const AlsoLike = ({ name }) => {
     );
   }
   const notItem = dataCtx.data.filter((entry) => entry.name !== name);
-
+  let nums = [];
   for (let i = 0; i < 3; i++) {
-    console.log(randomNum(notItem.length));
+    nums.push(notItem[i]);
   }
 
   return (
