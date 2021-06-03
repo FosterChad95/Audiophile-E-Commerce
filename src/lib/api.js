@@ -20,7 +20,9 @@ export async function getData(type) {
     items.push(itemsObj);
   }
 
-  return items.filter((el) => el.category === type);
+  const filtered = items.filter((el) => el.category === type);
+
+  return filtered;
 }
 
 export async function getSingleProduct(product) {
@@ -43,5 +45,6 @@ export async function getSingleProduct(product) {
     items.push(itemsObj);
   }
 
-  return items.filter((el) => el.name === product);
+  const filtered = items.filter((el) => el.name === product);
+  return filtered;
 }

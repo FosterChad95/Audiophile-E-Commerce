@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-
 import classes from "./MiddleDetail.module.css";
 
 const MiddleDetail = ({ features, includedItem, includedAmount }) => {
@@ -15,13 +13,15 @@ const MiddleDetail = ({ features, includedItem, includedAmount }) => {
           <h1>In The Box</h1>
           <div className={classes.units}>
             <ul>
-              {includedAmount.map((amt) => (
-                <li className={classes.amt}>{`${amt} x`}</li>
+              {includedAmount.map((amt, index) => (
+                <li key={index} className={classes.amt}>{`${amt} x`}</li>
               ))}
             </ul>
             <ul>
-              {includedItem.map((item) => (
-                <li className={classes.item}>{item}</li>
+              {includedItem.map((item, index) => (
+                <li key={index} className={classes.item}>
+                  {item}
+                </li>
               ))}
             </ul>
           </div>

@@ -16,7 +16,12 @@ const ZX9SpeakerHome = () => {
             Upgrade to premium speakers that are phenomenally built to deliver
             truly remarkable sound.
           </p>
-          <ButtonBlack className={classes.btn}>See Product</ButtonBlack>
+          <ButtonBlack
+            to="product-detail/ZX9%20Speaker"
+            className={classes.btn}
+          >
+            See Product
+          </ButtonBlack>
         </div>
       </div>
     </>
