@@ -20,6 +20,10 @@ export async function getData(type) {
     items.push(itemsObj);
   }
 
+  if (!type) {
+    return items;
+  }
+
   const filtered = items.filter((el) => el.category === type);
 
   return filtered;

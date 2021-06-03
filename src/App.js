@@ -7,7 +7,6 @@ import Earphones from "./pages/Earphones/Earphones";
 import classes from "./App.module.css";
 import Cart from "./pages/Cart/Cart";
 import ProductDetail from "./pages/ProductDetail/ProductDetail";
-import { ContextProvider } from "./store/CartProvider";
 
 const App = () => {
   const [name, setName] = useState("");
@@ -20,9 +19,7 @@ const App = () => {
     <div className={classes.app}>
       <Switch>
         <Route path="/product-detail/:productId">
-          <ContextProvider>
-            <ProductDetail product={name} />
-          </ContextProvider>
+          <ProductDetail product={name} />
         </Route>
         <Route path="/headphones">
           <Headphones headphoneData={buttonClickHandler} />

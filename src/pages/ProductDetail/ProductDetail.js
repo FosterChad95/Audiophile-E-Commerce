@@ -9,6 +9,7 @@ import ProductItem from "../../components/ProductItem/ProductItem";
 import { Link } from "react-router-dom";
 import MiddleDetail from "../../components/MiddleDetail/MiddleDetail";
 import Gallery from "../../components/Gallery/Gallery";
+import AlsoLike from "../../components/AlsoLike/AlsoLike";
 
 const ProductDetail = ({ product }) => {
   const { sendRequest, status, data, error } = useHttp(getSingleProduct, true);
@@ -50,6 +51,7 @@ const ProductDetail = ({ product }) => {
       category,
       price,
       includes,
+      gallery,
     },
   ] = data;
 
@@ -74,7 +76,8 @@ const ProductDetail = ({ product }) => {
         includedAmount={includes.map((quant) => quant.quantity)}
         features={features}
       />
-      <Gallery />
+      <Gallery gallery={gallery} name={name} />
+      <AlsoLike name={name} />
     </>
   );
 };
