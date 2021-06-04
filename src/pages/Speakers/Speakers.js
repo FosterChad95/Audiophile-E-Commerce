@@ -9,11 +9,7 @@ import BrandDescription from "../../components/BrandDescription/BrandDescription
 import CategoryLink from "../../components/CategoryLink/CategoryLink";
 import Footer from "../../components/Footer/Footer";
 
-const Speakers = ({ speakerData }) => {
-  const onClickHandler = (name) => {
-    speakerData(name);
-  };
-
+const Speakers = () => {
   const {
     sendRequest,
     status,
@@ -52,7 +48,6 @@ const Speakers = ({ speakerData }) => {
           description={speaker.description}
           id={speaker.id}
           image={speaker.image}
-          onClicked={onClickHandler}
         />
       ))}
       <CategoryLink />
