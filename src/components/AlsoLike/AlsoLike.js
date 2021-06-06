@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { DataContext } from "../../store/DataProvider";
 import ErrorModal from "../UI/ErrorModal";
 import LoadingSpinner from "../UI/LoadingSpinner";
+import Button from "../UI/Button";
+import classes from "./AlsoLike.module.css";
 
 const AlsoLike = ({ name }) => {
   const dataCtx = useContext(DataContext);
@@ -27,10 +29,19 @@ const AlsoLike = ({ name }) => {
     nums.push(notItem[i]);
   }
 
+  console.log(nums[0].image.desktop);
+
   return (
     <>
-      <div>
+      <div className={classes.likes}>
         <h1>You may also like</h1>
+        {nums.map((entry) => (
+          <div className={classes.info}>
+            <img src={entry.image.desktop} alt={entry.name} />
+            <h2>{entry.name}</h2>
+            <Button className={classes.btn}>SEE PRODUCT</Button>
+          </div>
+        ))}
       </div>
     </>
   );

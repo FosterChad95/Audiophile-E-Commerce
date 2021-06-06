@@ -1,0 +1,42 @@
+.likes {
+  grid-column: 2/5;
+  height: 57.1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 31.8rem);
+  grid-template-rows: max-content 47.1rem;
+  grid-row-gap: 6.3rem;
+  grid-column-gap: 3rem;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+}
+
+.likes h1 {
+  font-weight: 700;
+  font-size: 3.2rem;
+  line-height: 3.6rem;
+  letter-spacing: 1.14px;
+  text-transform: uppercase;
+  grid-row: 1/2;
+  grid-column: 1/-1;
+}
+
+.likes img {
+  grid-row: 2/3;
+  height: 35rem;
+  width: 31.8rem;
+}
+
+.likes h2 {
+  margin: auto;
+}
+
+.info {
+  grid-row: 2/3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.btn {
+}
