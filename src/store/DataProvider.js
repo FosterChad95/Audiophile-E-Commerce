@@ -20,7 +20,7 @@ const DataProvider = (props) => {
     sendRequest();
 
     return () => sendRequest();
-  }, []);
+  });
 
   const changeNameHandler = (input) => {
     setName(input);

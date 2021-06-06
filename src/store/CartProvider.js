@@ -28,18 +28,18 @@ const ContextProvider = (props) => {
     });
   };
 
-  const onRemoveToCartHandler = (id) => {
-    dispatchAction({
-      type: "REMOVE",
-      id: id,
-    });
-  };
+  // const onRemoveToCartHandler = (id) => {
+  //   dispatchAction({
+  //     type: "REMOVE",
+  //     id: id,
+  //   });
+  // };
 
-  const clearCartHandler = () => {
-    dispatchAction({
-      type: "CLEAR",
-    });
-  };
+  // const clearCartHandler = () => {
+  //   dispatchAction({
+  //     type: "CLEAR",
+  //   });
+  // };
 
   const cartContextValue = {
     items: cartState.items,
