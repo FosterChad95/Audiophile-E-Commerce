@@ -15,7 +15,6 @@ const DataProvider = (props) => {
   const { data, error, status, sendRequest } = useHttp(getData, false);
 
   const [name, setName] = useState("");
-  const [category, setCategory] = useState("");
 
   useEffect(() => {
     sendRequest();
@@ -28,10 +27,6 @@ const DataProvider = (props) => {
     setName(input);
   };
 
-  const changeCategoryHandler = (inp) => {
-    setCategory(inp);
-  };
-
   const dataContextValue = {
     data,
     error,
@@ -39,8 +34,6 @@ const DataProvider = (props) => {
     sendRequest,
     nameChange: changeNameHandler,
     name: name,
-    categoryChange: changeCategoryHandler,
-    category: category,
   };
 
   return (
