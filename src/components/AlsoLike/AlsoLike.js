@@ -35,11 +35,13 @@ const AlsoLike = ({ name }) => {
     <>
       <div className={classes.likes}>
         <h1>You may also like</h1>
-        {nums.map((entry) => (
-          <div className={classes.info}>
+        {nums.map((entry, index) => (
+          <div key={index} className={classes.info}>
             <img src={entry.image.desktop} alt={entry.name} />
             <h2>{entry.name}</h2>
-            <Button className={classes.btn}>SEE PRODUCT</Button>
+            <Button to="/cart" className={classes.btn}>
+              SEE PRODUCT
+            </Button>
           </div>
         ))}
       </div>

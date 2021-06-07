@@ -20,7 +20,8 @@ const DataProvider = (props) => {
     sendRequest();
 
     return () => sendRequest();
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const changeNameHandler = (input) => {
     setName(input);

@@ -12,8 +12,8 @@ const ZX7SpeakerHome = (props) => {
         <div>
           <h1>ZX7 Speaker</h1>
           <ButtonBlack
-            to="ZX7 Speaker"
             onClick={() => dataCtx.nameChange("ZX7 Speaker")}
+            to={`/product-detail/${dataCtx.name}`}
           >
             SEE PRODUCT
           </ButtonBlack>

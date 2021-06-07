@@ -61,7 +61,7 @@ const ProductDetail = ({ product }) => {
         <Header />
       </div>
       <Link to={`/${category}`} className={classes.back}>
-        Go Back
+        `More {category[0].toUpperCase() + category.slice(1)}`
       </Link>
       <ProductItem
         id={id}
