@@ -3,6 +3,8 @@
   display: grid;
   grid-template-columns: 63.5rem 25rem;
   grid-column-gap: 12.5rem;
+  justify-self: center;
+  align-self: center;
 }
 
 .middle h1 {

@@ -5,7 +5,7 @@ import Home from "./pages/Home/Home";
 import Speakers from "./pages/Speakers/Speakers";
 import Earphones from "./pages/Earphones/Earphones";
 import classes from "./App.module.css";
-import Cart from "./pages/Cart/Cart";
+import Checkout from "./pages/Checkout/Checkout";
 import ProductDetail from "./pages/ProductDetail/ProductDetail";
 import { DataContext } from "./store/DataProvider";
 
@@ -27,8 +27,8 @@ const App = () => {
         <Route path="/earphones">
           <Earphones />
         </Route>
-        <Route path="/cart">
-          <Cart />
+        <Route path="/checkout">
+          <Checkout />
         </Route>
         <Route path="/">
           <Home />

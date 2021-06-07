@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
 import Button from "./Button";
-import CartContext from "../../store/CartProvider";
+import { CartContext } from "../../store/CartProvider";
 import classes from "./NumberInput.module.css";
 
-const NumberInput = () => {
+const NumberInput = ({ price, item, buttonOff }) => {
   const cartCtx = useContext(CartContext);
   const [value, setValue] = useState(1);
 
@@ -18,7 +18,12 @@ const NumberInput = () => {
   };
 
   const handleSubmitAmount = () => {
-    cartCtx.amount = value;
+    cartCtx.addItem({
+      item: item,
+      amount: value,
+      price: price,
+    });
+    cartCtx.toggleCart();
   };
 
   return (
@@ -31,9 +36,12 @@ const NumberInput = () => {
         <button className={classes.toggle} onClick={addItem}>
           +
         </button>
-        <Button to={"/"} onClick={handleSubmitAmount}>
-          Add to Cart
-        </Button>
+
+        {buttonOff ? (
+          ""
+        ) : (
+          <Button onClick={handleSubmitAmount}>Add to Cart</Button>
+        )}
       </div>
     </>
   );

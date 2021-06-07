@@ -1,5 +1,5 @@
 import classes from "./ProductDetail.module.css";
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import Header from "../../components/Header/Header";
 import ErrorModal from "../../components/UI/ErrorModal";
 import LoadingSpinner from "../../components/UI/LoadingSpinner";
@@ -10,9 +10,15 @@ import { Link } from "react-router-dom";
 import MiddleDetail from "../../components/MiddleDetail/MiddleDetail";
 import Gallery from "../../components/Gallery/Gallery";
 import AlsoLike from "../../components/AlsoLike/AlsoLike";
+import CategoryLink from "../../components/CategoryLink/CategoryLink";
+import BrandDescription from "../../components/BrandDescription/BrandDescription";
+import Footer from "../../components/Footer/Footer";
+import { CartContext } from "../../store/CartProvider";
+import CartModal from "../../components/Cart/CartModal";
 
 const ProductDetail = ({ product }) => {
   const { sendRequest, status, data, error } = useHttp(getSingleProduct, true);
+  const cartCtx = useContext(CartContext);
 
   useEffect(() => {
     if (product) localStorage.setItem("product", JSON.stringify(product));
@@ -57,6 +63,7 @@ const ProductDetail = ({ product }) => {
 
   return (
     <>
+      {cartCtx.cartIsShown && <CartModal>Hello</CartModal>}
       <div className={classes.top}>
         <Header />
       </div>
@@ -65,6 +72,7 @@ const ProductDetail = ({ product }) => {
       </Link>
       <ProductItem
         id={id}
+        item={data}
         name={name}
         image={image}
         newOne={newOne}
@@ -78,6 +86,9 @@ const ProductDetail = ({ product }) => {
       />
       <Gallery gallery={gallery} name={name} />
       <AlsoLike name={name} />
+      <CategoryLink />
+      <BrandDescription />
+      <Footer />
     </>
   );
 };

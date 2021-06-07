@@ -10,9 +10,7 @@
   letter-spacing: 1px;
   font-family: inherit;
   text-transform: uppercase;
-  margin: 2rem;
-  align-self: center;
-  justify-self: center;
+  margin: 2rem auto;
   cursor: pointer;
 }
 

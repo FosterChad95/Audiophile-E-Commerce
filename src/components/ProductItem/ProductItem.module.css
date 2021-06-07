@@ -5,6 +5,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin-top: 5.6rem;
+  justify-self: center;
+  align-self: center;
 }
 
 .Product:not(:last-child) {
@@ -49,12 +51,16 @@
 
 .imageContainer {
   grid-column: 1/2;
+  align-self: center;
+  justify-self: center;
 }
 
 .Product img {
   height: 46rem;
   width: 44rem;
   border-radius: 8px;
+  justify-self: center;
+  align-self: center;
 }
 
 .imageContainerOpp {

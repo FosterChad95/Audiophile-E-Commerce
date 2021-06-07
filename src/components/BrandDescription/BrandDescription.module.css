@@ -5,6 +5,8 @@
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 7rem;
   margin-bottom: 20rem;
+  justify-self: center;
+  align-self: center;
 }
 
 .Brand img {
@@ -13,6 +15,7 @@
   height: 48rem;
   border-radius: 8px;
   align-self: center;
+  justify-self: center;
 }
 
 .Brand aside {

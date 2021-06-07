@@ -1,13 +1,15 @@
 .categories {
   display: flex;
   grid-column: 2/5;
+  justify-self: center;
+  align-self: center;
 }
 
 .category {
   display: flex;
   flex-direction: column;
   height: 28.4rem;
-  width: 111rem;
+  width: 35rem;
   margin-bottom: 16.8rem;
   position: relative;
   background: linear-gradient(to bottom, #fff 0%, #fff 25%, #f1f1f1 25%);

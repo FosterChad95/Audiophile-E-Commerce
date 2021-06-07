@@ -1,8 +1,8 @@
 import React from "react";
 import classes from "./ProductItem.module.css";
-
+import Button from "../UI/Button";
 import NumberInput from "../UI/NumberInput";
-const ProductItem = ({ name, description, newOne, image, data, price }) => {
+const ProductItem = ({ name, description, newOne, image, item, price }) => {
   const { desktop } = image;
 
   return (
@@ -18,7 +18,7 @@ const ProductItem = ({ name, description, newOne, image, data, price }) => {
           <p className={classes.price}>{`$ ${price.toLocaleString(
             "en-US"
           )}`}</p>
-          <NumberInput item={data} />
+          <NumberInput price={price} item={item} />
         </aside>
       </div>
     </>
