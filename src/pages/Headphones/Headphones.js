@@ -1,5 +1,4 @@
-import React from "react";
-import { useEffect } from "react/cjs/react.development";
+import React, { useEffect } from "react";
 import CategoryTop from "../../components/CategoryTop/CategoryTop";
 import ProductLinkPage from "../../components/ProductLinkPage/ProductLinkPage";
 import LoadingSpinner from "../../components/UI/LoadingSpinner";
