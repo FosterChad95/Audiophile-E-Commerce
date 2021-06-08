@@ -63,7 +63,7 @@ const ProductDetail = ({ product }) => {
 
   return (
     <>
-      {cartCtx.cartIsShown && <CartModal>Hello</CartModal>}
+      {cartCtx.cartIsShown && <CartModal />}
       <div className={classes.top}>
         <Header />
       </div>

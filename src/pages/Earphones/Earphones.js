@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import CategoryTop from "../../components/CategoryTop/CategoryTop";
 import ProductLinkPage from "../../components/ProductLinkPage/ProductLinkPage";
 import LoadingSpinner from "../../components/UI/LoadingSpinner";
@@ -8,8 +8,12 @@ import useHttp from "../../hooks/useHttp";
 import CategoryLink from "../../components/CategoryLink/CategoryLink";
 import BrandDescription from "../../components/BrandDescription/BrandDescription";
 import Footer from "../../components/Footer/Footer";
+import { CartContext } from "../../store/CartProvider";
+import CartModal from "../../components/Cart/CartModal";
 
 const Earphones = () => {
+  const cartCtx = useContext(CartContext);
+
   const {
     sendRequest,
     status,
@@ -40,6 +44,7 @@ const Earphones = () => {
   return (
     <>
       <CategoryTop heading="EARPHONES" />
+      {cartCtx.cartIsShown && <CartModal />}
       {loadedEarphones.map((data, index) => (
         <ProductLinkPage
           key={data.id}

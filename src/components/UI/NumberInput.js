@@ -3,7 +3,7 @@ import Button from "./Button";
 import { CartContext } from "../../store/CartProvider";
 import classes from "./NumberInput.module.css";
 
-const NumberInput = ({ price, item, buttonOff, className }) => {
+const NumberInput = ({ price, item, buttonOff, className, val }) => {
   const cartCtx = useContext(CartContext);
   const [value, setValue] = useState(1);
 
@@ -23,6 +23,7 @@ const NumberInput = ({ price, item, buttonOff, className }) => {
       amount: value,
       price: price,
     });
+    cartCtx.toggleCart();
   };
 
   return (
@@ -31,7 +32,7 @@ const NumberInput = ({ price, item, buttonOff, className }) => {
         <button className={className || classes.toggle} onClick={removeItem}>
           -
         </button>
-        <span className={className || classes.amount}>{value}</span>
+        <span className={className || classes.amount}>{val || value}</span>
         <button className={className || classes.toggle} onClick={addItem}>
           +
         </button>

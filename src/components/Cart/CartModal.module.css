@@ -10,7 +10,7 @@
 
 .modal {
   position: fixed;
-  top: 50%;
+  top: 25%;
   left: 50%;
   width: 40rem;
   background-color: white;
@@ -19,8 +19,12 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   z-index: 30;
   animation: slide-down 300ms ease-out forwards;
+}
+
+.content {
   display: flex;
   flex-direction: column;
+  margin: 1rem 3rem;
 }
 
 .container {
@@ -28,7 +32,7 @@
 }
 
 .toggle {
-  padding: 1rem 2rem;
+  padding: 0.5rem 1rem;
   font-size: 1.3rem;
   border: none;
   font-weight: 700;
@@ -52,7 +56,7 @@
 
 .top {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -68,7 +72,7 @@
   margin: 3.2rem 0;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .items h4 {
@@ -104,6 +108,35 @@
   border: none;
   cursor: pointer;
   font-family: inherit;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+}
+
+.total h3 {
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+  color: #000000;
+  opacity: 0.5;
+}
+
+.total h2 {
+  font-weight: 700;
+  line-height: 2.5rem;
+  font-size: 1.8rem;
+}
+
+.checkoutBtn {
+  width: 100%;
+  height: 4.8rem;
+  margin-top: 2.4rem;
+  background-color: #d87d4a;
+  outline: none;
+  border: none;
+  justify-self: center;
 }
 
 @keyframes slide-down {

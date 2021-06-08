@@ -15,7 +15,7 @@ const Home = (props) => {
   return (
     <>
       <Hero />
-      {cartCtx.cartIsShown && <CartModal>Hello</CartModal>}
+      {cartCtx.cartIsShown && <CartModal />}
       <CategoryLink />
       <ZX9SpeakerHome />
       <ZX7SpeakerHome />

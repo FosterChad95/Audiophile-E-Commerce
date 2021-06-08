@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import ProductLinkPage from "../../components/ProductLinkPage/ProductLinkPage";
 import CategoryTop from "../../components/CategoryTop/CategoryTop";
 import useHttp from "../../hooks/useHttp";
@@ -8,8 +8,12 @@ import ErrorModal from "../../components/UI/ErrorModal";
 import BrandDescription from "../../components/BrandDescription/BrandDescription";
 import CategoryLink from "../../components/CategoryLink/CategoryLink";
 import Footer from "../../components/Footer/Footer";
+import { CartContext } from "../../store/CartProvider";
+import CartModal from "../../components/Cart/CartModal";
 
 const Speakers = () => {
+  const cartCtx = useContext(CartContext);
+
   const {
     sendRequest,
     status,
@@ -40,6 +44,7 @@ const Speakers = () => {
   return (
     <>
       <CategoryTop heading="SPEAKERS" />
+      {cartCtx.cartIsShown && <CartModal />}
       {loadedSpeakers.map((speaker) => (
         <ProductLinkPage
           key={speaker.id}

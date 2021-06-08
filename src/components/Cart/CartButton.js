@@ -8,13 +8,9 @@ import CartModal from "./CartModal";
 const CartButton = () => {
   const cartCtx = useContext(CartContext);
 
-  const toggleCartHandler = () => {
-    cartCtx.toggleCart();
-  };
-
   return (
     <div>
-      <Link className={classes.button} onClick={toggleCartHandler}>
+      <Link className={classes.button} onClick={() => cartCtx.toggleCart()}>
         <ReactLogo className={classes.logo} />
       </Link>
     </div>

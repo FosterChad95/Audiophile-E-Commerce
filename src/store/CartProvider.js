@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 
 const defaultCartState = {
   items: [],
@@ -49,7 +49,6 @@ const cartReducer = (state, action) => {
       });
     }
 
-    console.log(updatedItems);
     return {
       items: updatedItems,
       totalPrice: newTotalPrice,
@@ -74,6 +73,7 @@ const cartReducer = (state, action) => {
       ...defaultCartState,
     };
   }
+  localStorage.removeItem("cartItems");
 
   return defaultCartState;
 };
@@ -106,8 +106,6 @@ const ContextProvider = (props) => {
       type: "TOGGLE",
     });
   };
-
-  console.log(cartState);
 
   const cartContextValue = {
     items: cartState.items,

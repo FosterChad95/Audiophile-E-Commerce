@@ -1,7 +1,9 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import classes from "./CartModal.module.css";
 import { CartContext } from "../../store/CartProvider";
 import NumberInput from "../../components/UI/NumberInput";
+import Button from "../UI/Button";
 
 const firstWord = (name) => {
   const ind = name.indexOf(" ");
@@ -17,13 +19,18 @@ const BackDrop = () => {
 const ModalOverlay = (props) => {
   return (
     <div className={classes.modal}>
-      <div className="content">{props.children}</div>
+      <div className={classes.content}>{props.children}</div>
     </div>
   );
 };
 
 const CartModal = () => {
   const cartCtx = useContext(CartContext);
+  const storage = JSON.parse(localStorage.getItem("cartItems"));
+
+  console.log(storage);
+
+  const submitCartHandler = () => {};
 
   if (cartCtx.items.length === 0) {
     return (
@@ -50,19 +57,28 @@ const CartModal = () => {
         </div>
         <div>
           {cartCtx.items.map((cartItem) => (
-            <div className={classes.items} key={cartItem.item[0].id}>
-              <img
-                src={cartItem.item[0].image.desktop}
-                alt={cartItem.item[0].name}
-              />
+            <div className={classes.items} key={cartItem.id}>
+              <img src={cartItem.image.desktop} alt={cartItem.name} />
               <div>
-                <h4>{firstWord(cartItem.item[0].name)}</h4>
+                <h4>{firstWord(cartItem.name)}</h4>
                 <p>{cartItem.price}</p>
               </div>
-              <NumberInput buttonOff={true} className={classes.toggle} />
+              <NumberInput
+                buttonOff={true}
+                className={classes.toggle}
+                val={cartItem.amount}
+              />
             </div>
           ))}
         </div>
+        <div className={classes.total}>
+          <h3>TOTAL</h3>
+          <h2>{`$ ${cartCtx.totalPrice.toLocaleString("en-US")}`}</h2>
+        </div>
+
+        <Button className={classes.checkoutBtn} onClick={submitCartHandler}>
+          Checkout
+        </Button>
       </ModalOverlay>
     </>
   );
