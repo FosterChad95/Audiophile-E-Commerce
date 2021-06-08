@@ -3,6 +3,11 @@ import classes from "./CartModal.module.css";
 import { CartContext } from "../../store/CartProvider";
 import NumberInput from "../../components/UI/NumberInput";
 
+const firstWord = (name) => {
+  const ind = name.indexOf(" ");
+  return name.substring(0, ind);
+};
+
 const BackDrop = () => {
   const cartCtx = useContext(CartContext);
 
@@ -44,17 +49,17 @@ const CartModal = () => {
           </button>
         </div>
         <div>
-          {cartCtx.items.map((cartItem, index) => (
-            <div className={classes.items} key={index}>
+          {cartCtx.items.map((cartItem) => (
+            <div className={classes.items} key={cartItem.item[0].id}>
               <img
                 src={cartItem.item[0].image.desktop}
                 alt={cartItem.item[0].name}
               />
               <div>
-                <h4>{cartItem.item[0].name}</h4>
+                <h4>{firstWord(cartItem.item[0].name)}</h4>
                 <p>{cartItem.price}</p>
               </div>
-              <NumberInput buttonOff={true} />
+              <NumberInput buttonOff={true} className={classes.toggle} />
             </div>
           ))}
         </div>

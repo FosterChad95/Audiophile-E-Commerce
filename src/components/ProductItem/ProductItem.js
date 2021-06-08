@@ -1,6 +1,5 @@
 import React from "react";
 import classes from "./ProductItem.module.css";
-import Button from "../UI/Button";
 import NumberInput from "../UI/NumberInput";
 const ProductItem = ({ name, description, newOne, image, item, price }) => {
   const { desktop } = image;
