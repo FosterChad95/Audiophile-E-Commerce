@@ -8,12 +8,12 @@ const NumberInput = ({ price, item, buttonOff, className, val }) => {
   const [value, setValue] = useState(1);
 
   const addItem = () => {
-    if (value < 1) return;
+    if (value >= 6) return;
     setValue((prevVal) => prevVal + 1);
   };
 
   const removeItem = () => {
-    if (value < 1) return;
+    if (value <= 1) return;
     setValue((prevVal) => prevVal - 1);
   };
 

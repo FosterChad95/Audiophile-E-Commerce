@@ -9,6 +9,7 @@
   font-weight: 700;
   line-height: 1.8rem;
   opacity: 0.25;
+  cursor: pointer;
 }
 
 .amount {

@@ -49,11 +49,27 @@ const cartReducer = (state, action) => {
       });
     }
 
+    const storage = {
+      items: updatedItems,
+      totalPrice: newTotalPrice,
+      totalAmount: totalAmountItems,
+    };
+
+    localStorage.setItem("cartItems", JSON.stringify(storage));
+
     return {
       items: updatedItems,
       totalPrice: newTotalPrice,
       totalAmount: totalAmountItems,
       cartIsShown: state.cartIsShown,
+    };
+  }
+
+  if (action.type === "STORAGE") {
+    return {
+      items: action.data.items,
+      totalAmount: action.data.totalAmount,
+      totalPrice: action.data.totalPrice,
     };
   }
 
@@ -73,13 +89,23 @@ const cartReducer = (state, action) => {
       ...defaultCartState,
     };
   }
-  localStorage.removeItem("cartItems");
 
   return defaultCartState;
 };
 
 const ContextProvider = (props) => {
   const [cartState, dispatchAction] = useReducer(cartReducer, defaultCartState);
+
+  useEffect(() => {
+    if (localStorage.getItem("cartItems")) {
+      dispatchAction({
+        type: "STORAGE",
+        data: JSON.parse(localStorage.getItem("cartItems")),
+      });
+    }
+
+    return () => localStorage.setItem(JSON.stringify(cartState));
+  }, []);
 
   const onAddToCartHandler = (item) => {
     dispatchAction({

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import classes from "./CartModal.module.css";
 import { CartContext } from "../../store/CartProvider";
@@ -26,9 +26,6 @@ const ModalOverlay = (props) => {
 
 const CartModal = () => {
   const cartCtx = useContext(CartContext);
-  const storage = JSON.parse(localStorage.getItem("cartItems"));
-
-  console.log(storage);
 
   const submitCartHandler = () => {};
 
