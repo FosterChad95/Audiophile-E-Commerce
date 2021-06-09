@@ -1,0 +1,28 @@
+.form {
+  display: grid;
+  padding: 5.4rem 4.8rem;
+  grid-column: 2/4;
+  background-color: white;
+  border-radius: 10px;
+  margin-top: 3.8rem;
+  margin-bottom: 14.1rem;
+}
+
+.form h1 {
+  font-weight: 700;
+  font-size: 3.2rem;
+  text-transform: uppercase;
+  line-height: 3.6rem;
+  letter-spacing: 1.14px;
+}
+
+.form h3 {
+  font-weight: 700;
+  font-size: 1.3rem;
+  line-height: 2.5rem;
+  letter-spacing: 0.93px;
+  color: #d87d4a;
+}
+
+.field {
+}

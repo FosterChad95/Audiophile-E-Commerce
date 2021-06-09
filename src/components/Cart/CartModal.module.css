@@ -157,6 +157,14 @@
   border: none;
   justify-self: center;
   cursor: pointer;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: white;
+}
+
+.checkoutBtn:hover {
+  background-color: #fbaf85;
+  transition: all 0.3s;
 }
 
 @keyframes slide-down {
