@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useEffect, useReducer } from "react";
 
 const defaultCartState = {
   items: [],
@@ -26,7 +26,7 @@ const cartReducer = (state, action) => {
     const totalAmountItems = state.totalAmount + action.item.amount;
 
     const existingItemIndex = state.items.findIndex(
-      (item) => item.id === action.item[0].id
+      (item) => item.id === action.item.id
     );
 
     const existingItem = state.items[existingItemIndex];
@@ -44,7 +44,7 @@ const cartReducer = (state, action) => {
       updatedItems[existingItemIndex] = updatedItem;
     } else {
       updatedItems = state.items.concat({
-        ...action.item[0],
+        ...action.item,
         amount: action.item.amount,
       });
     }
@@ -61,6 +61,37 @@ const cartReducer = (state, action) => {
       items: updatedItems,
       totalPrice: newTotalPrice,
       totalAmount: totalAmountItems,
+      cartIsShown: state.cartIsShown,
+    };
+  }
+
+  if (action.type === "REMOVE") {
+    const existingItemIndex = state.items.findIndex(
+      (item) => item.id === action.id
+    );
+
+    const existingItem = state.items[existingItemIndex];
+    const newTotal = state.totalPrice - existingItem.price;
+
+    let updatedItems;
+
+    if (existingItem.amount === 1) {
+      updatedItems = state.items.filter((item) => item.id !== action.id);
+    } else {
+      const updatedItem = { ...existingItem, amount: existingItem.amount - 1 };
+      updatedItems = [...state.items];
+      updatedItems[existingItemIndex] = updatedItem;
+    }
+
+    const newTotalAmount =
+      updatedItems.length === 0
+        ? 0
+        : updatedItems.map((el) => el.amount).reduce((acc, cur) => acc + cur);
+
+    return {
+      items: updatedItems,
+      totalPrice: newTotal,
+      totalAmount: newTotalAmount,
       cartIsShown: state.cartIsShown,
     };
   }
@@ -85,6 +116,7 @@ const cartReducer = (state, action) => {
   }
 
   if (action.type === "CLEAR") {
+    localStorage.removeItem("cartItems");
     return {
       ...defaultCartState,
     };
@@ -114,7 +146,7 @@ const ContextProvider = (props) => {
     });
   };
 
-  const onRemoveToCartHandler = (id) => {
+  const removeItemHandler = (id) => {
     dispatchAction({
       type: "REMOVE",
       id: id,
@@ -137,6 +169,7 @@ const ContextProvider = (props) => {
     items: cartState.items,
     totalAmount: cartState.totalAmount,
     addItem: onAddToCartHandler,
+    removeItem: removeItemHandler,
     toggleCart: toggleCartHandler,
     cartIsShown: cartState.cartIsShown,
     clearCart: clearCartHandler,

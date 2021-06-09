@@ -1,8 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
 import classes from "./CartModal.module.css";
 import { CartContext } from "../../store/CartProvider";
-import NumberInput from "../../components/UI/NumberInput";
 import Button from "../UI/Button";
 
 const firstWord = (name) => {
@@ -28,6 +26,18 @@ const CartModal = () => {
   const cartCtx = useContext(CartContext);
 
   const submitCartHandler = () => {};
+
+  const onAddHandler = (item) => {
+    cartCtx.addItem({
+      ...item,
+      amount: 1,
+      price: item.price,
+    });
+  };
+
+  const onRemoveHandler = (id) => {
+    cartCtx.removeItem(id);
+  };
 
   if (cartCtx.items.length === 0) {
     return (
@@ -60,11 +70,23 @@ const CartModal = () => {
                 <h4>{firstWord(cartItem.name)}</h4>
                 <p>{cartItem.price}</p>
               </div>
-              <NumberInput
-                buttonOff={true}
-                className={classes.toggle}
-                val={cartItem.amount}
-              />
+              <div className={classes.toggles}>
+                <button
+                  className={classes.toggle}
+                  onClick={onRemoveHandler.bind(null, cartItem.id)}
+                >
+                  -
+                </button>
+                <div className={classes.amount}>
+                  <h5>{cartItem.amount}</h5>
+                </div>
+                <button
+                  onClick={onAddHandler.bind(null, cartItem)}
+                  className={classes.toggle}
+                >
+                  +
+                </button>
+              </div>
             </div>
           ))}
         </div>

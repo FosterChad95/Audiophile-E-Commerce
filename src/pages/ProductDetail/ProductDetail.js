@@ -1,5 +1,5 @@
 import classes from "./ProductDetail.module.css";
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import Header from "../../components/Header/Header";
 import ErrorModal from "../../components/UI/ErrorModal";
 import LoadingSpinner from "../../components/UI/LoadingSpinner";
@@ -19,6 +19,7 @@ import CartModal from "../../components/Cart/CartModal";
 const ProductDetail = ({ product }) => {
   const { sendRequest, status, data, error } = useHttp(getSingleProduct, true);
   const cartCtx = useContext(CartContext);
+  const [value, setValue] = useState(1);
 
   useEffect(() => {
     if (product) localStorage.setItem("product", JSON.stringify(product));
@@ -61,9 +62,13 @@ const ProductDetail = ({ product }) => {
     },
   ] = data;
 
+  const getValueHandler = (val) => {
+    setValue(val);
+  };
+
   return (
     <>
-      {cartCtx.cartIsShown && <CartModal />}
+      {cartCtx.cartIsShown && <CartModal updatedVal={value} />}
       <div className={classes.top}>
         <Header />
       </div>
@@ -78,6 +83,7 @@ const ProductDetail = ({ product }) => {
         newOne={newOne}
         description={description}
         price={price}
+        onSubmitted={getValueHandler}
       />
       <MiddleDetail
         includedItem={includes.map((item) => item.item)}
