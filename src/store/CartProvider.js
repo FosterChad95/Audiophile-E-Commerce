@@ -137,6 +137,7 @@ const ContextProvider = (props) => {
     }
 
     return () => localStorage.setItem(JSON.stringify(cartState));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onAddToCartHandler = (item) => {
