@@ -71,6 +71,11 @@
   position: relative;
 }
 
+.fieldpayment:hover {
+  border: 1.5px solid #d87d4a;
+  transition: border 0.2s;
+}
+
 .fieldpayment.active {
   border: 1.5px solid #d87d4a;
   transition: border 0.2s;
@@ -84,6 +89,7 @@
   position: absolute;
   left: 0.5rem;
   top: 2.2rem;
+  cursor: pointer;
 }
 
 .form label {
@@ -123,4 +129,21 @@
   letter-spacing: -0.25px;
   color: #000000;
   opacity: 0.4;
+}
+
+.cash {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  grid-column: 1/-1;
+  align-items: center;
+}
+
+.cash p {
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+  color: #000000;
+  opacity: 0.5;
+  grid-column: 2/3;
+  margin-left: 3.2rem;
 }

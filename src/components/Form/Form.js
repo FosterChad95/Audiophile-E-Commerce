@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { ReactComponent as ReactLogo } from "../../assets/shared/desktop/payment.svg";
 
 import classes from "./Form.module.css";
 const Form = () => {
@@ -78,22 +79,42 @@ const Form = () => {
             />
             <label htmlFor="payment2">Cash on Delivery</label>
           </div>
-          <div className={classes.fieldodd}>
-            <label htmlFor="Credit-Card-Number">Credit Card Number</label>
-            <input type="tel" placeholder="xxxx xxxx xxxx xxxx" name="city" />
-          </div>
-          <div className={classes.fieldeven}>
-            <label htmlFor="card-expiration-date">Card Expiration Date</label>
-            <input
-              type="text"
-              name="card-expiration-date"
-              placeholder="10/2021"
-            />
-          </div>
-          <div className={classes.fieldodd}>
-            <label htmlFor="card-cvv-number">Card CVV Number</label>
-            <input type="text" name="card-cvv-number" placeholder="456" />
-          </div>
+          {active === 1 ? (
+            <>
+              <div className={classes.fieldodd}>
+                <label htmlFor="Credit-Card-Number">Credit Card Number</label>
+                <input
+                  type="tel"
+                  placeholder="xxxx xxxx xxxx xxxx"
+                  name="city"
+                />
+              </div>
+              <div className={classes.fieldeven}>
+                <label htmlFor="card-expiration-date">
+                  Card Expiration Date
+                </label>
+                <input
+                  type="text"
+                  name="card-expiration-date"
+                  placeholder="10/2021"
+                />
+              </div>
+              <div className={classes.fieldodd}>
+                <label htmlFor="card-cvv-number">Card CVV Number</label>
+                <input type="text" name="card-cvv-number" placeholder="456" />
+              </div>
+            </>
+          ) : (
+            <div className={classes.cash}>
+              <ReactLogo />
+              <p>
+                The ‘Cash on Delivery’ option enables you to pay in cash when
+                our delivery courier arrives at your residence. Just make sure
+                your address is correct so that your order will not be
+                cancelled.
+              </p>
+            </div>
+          )}
         </section>
       </form>
     </>

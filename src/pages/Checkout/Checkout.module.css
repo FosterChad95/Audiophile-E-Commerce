@@ -25,3 +25,7 @@
   align-self: start;
   justify-self: start;
 }
+
+.back:hover {
+  color: #d87d4a;
+}
