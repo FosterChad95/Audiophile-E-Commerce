@@ -1,3 +1,12 @@
+# Overview
+
+I chose to style with CSS for this project as I wanted to showcase my CSS skills and was also developing from a Figma design. This project uses React, React Hooks , React Router and more. 
+
+Includes custom form validation as well as adding/removing from cart and a smooth checkout process.
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
