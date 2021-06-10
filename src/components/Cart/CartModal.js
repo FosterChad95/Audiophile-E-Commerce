@@ -25,8 +25,6 @@ const ModalOverlay = (props) => {
 const CartModal = () => {
   const cartCtx = useContext(CartContext);
 
-  const submitCartHandler = () => {};
-
   const onAddHandler = (item) => {
     cartCtx.addItem({
       ...item,
@@ -95,11 +93,7 @@ const CartModal = () => {
           <h2>{`$ ${cartCtx.totalPrice.toLocaleString("en-US")}`}</h2>
         </div>
 
-        <Button
-          className={classes.checkoutBtn}
-          to="/checkout"
-          onClick={submitCartHandler}
-        >
+        <Button className={classes.checkoutBtn} to="/checkout">
           Checkout
         </Button>
       </ModalOverlay>

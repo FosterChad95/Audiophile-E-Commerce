@@ -1,28 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
+
 import classes from "./Form.module.css";
 const Form = () => {
+  const [active, setActive] = useState(1);
+
   return (
     <>
       <form className={classes.form}>
         <h1>Checkout</h1>
         <section className={classes.section}>
           <h3>Billing Details</h3>
-          <div className={classes.field}>
+          <div className={classes.fieldodd}>
             <label htmlFor="name">Name</label>
             <input type="text" name="name" placeholder="Alexei Ward" />
           </div>
-          <div className={classes.field}>
+          <div className={classes.fieldeven}>
             <label htmlFor="email">Email Address</label>
             <input type="email" name="email" placeholder="alexei@gmail.com" />
           </div>
-          <div className={classes.field}>
+          <div className={classes.fieldodd}>
             <label htmlFor="phone">Phone Number</label>
             <input type="text" name="phone" placeholder="+1202-555-0136" />
           </div>
         </section>
         <section className={classes.section}>
           <h3>Shipping Info</h3>
-          <div className={classes.field}>
+          <div className={classes.fieldlong}>
             <label htmlFor="address">Address</label>
             <input
               type="text"
@@ -31,46 +34,65 @@ const Form = () => {
               placeholder="1137 Williams Avenue"
             />
           </div>
-          <div className={classes.field}>
+          <div className={classes.fieldodd}>
             <label htmlFor="zip-code">ZIP Code</label>
             <input type="text" name="zip-code" placeholder="10001" />
           </div>
-          <div className={classes.field}>
+          <div className={classes.fieldeven}>
             <label htmlFor="city">City</label>
             <input type="text" name="city" placeholder="New York" />
           </div>
-          <div className={classes.field}>
+          <div className={classes.fieldodd}>
             <label htmlFor="country">Country</label>
             <input type="text" name="country" placeholder="United States" />
           </div>
         </section>
         <section className={classes.section}>
           <h3>Payment Details</h3>
-          <div className={classes.field}>
-            <label htmlFor="address">Address</label>
+          <div className={classes.fieldodd}>
+            <h4>Payment Method</h4>
+          </div>
+          <div
+            className={`${classes.fieldpayment} ${
+              active === 1 && classes.active
+            }`}
+          >
             <input
-              type="text"
-              name="address"
-              placeholder="1137 Williams Avenue"
+              name="payment"
+              id="payment1"
+              type="radio"
+              onClick={() => setActive(1)}
             />
+            <label htmlFor="payment1">Credit Card</label>
           </div>
-          <div className={classes.field}>
-            <button aria-label="Credit Card Option">Credit Card</button>
-            <button aria-label="Cash On Delivery Option">
-              Cash on Delivery
-            </button>
+          <div
+            className={`${classes.fieldpayment} ${
+              active === 2 && classes.active
+            }`}
+          >
+            <input
+              id="payment2"
+              name="payment"
+              type="radio"
+              onClick={() => setActive(2)}
+            />
+            <label htmlFor="payment2">Cash on Delivery</label>
           </div>
-          <div className={classes.field}>
+          <div className={classes.fieldodd}>
             <label htmlFor="Credit-Card-Number">Credit Card Number</label>
             <input type="tel" placeholder="xxxx xxxx xxxx xxxx" name="city" />
           </div>
-          <div className={classes.field}>
+          <div className={classes.fieldeven}>
             <label htmlFor="card-expiration-date">Card Expiration Date</label>
-            <input type="number" name="card-expiration-date" />
+            <input
+              type="text"
+              name="card-expiration-date"
+              placeholder="10/2021"
+            />
           </div>
-          <div className={classes.field}>
+          <div className={classes.fieldodd}>
             <label htmlFor="card-cvv-number">Card CVV Number</label>
-            <input type="number" name="card-cvv-number" />
+            <input type="text" name="card-cvv-number" placeholder="456" />
           </div>
         </section>
       </form>

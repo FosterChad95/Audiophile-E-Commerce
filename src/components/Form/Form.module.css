@@ -8,21 +8,119 @@
   margin-bottom: 14.1rem;
 }
 
+.section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 3rem;
+}
+
+.section:not(:last-child) {
+  margin-bottom: 5.4rem;
+}
+
 .form h1 {
   font-weight: 700;
   font-size: 3.2rem;
   text-transform: uppercase;
   line-height: 3.6rem;
   letter-spacing: 1.14px;
+  margin-bottom: 4.1rem;
 }
 
 .form h3 {
+  text-transform: uppercase;
   font-weight: 700;
   font-size: 1.3rem;
   line-height: 2.5rem;
   letter-spacing: 0.93px;
   color: #d87d4a;
+  margin-bottom: 1.6rem;
 }
 
-.field {
+.form h4 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.65rem;
+  letter-spacing: -0.21px;
+}
+
+.fieldodd {
+  grid-column: 1/2;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2.4rem;
+}
+
+.fieldeven {
+  grid-column: 2/3;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2.4rem;
+}
+
+.fieldlong {
+  margin-bottom: 2.4rem;
+  grid-column: 1/-1;
+  flex-direction: column;
+  display: flex;
+}
+
+.fieldpayment {
+  grid-column: 2/3;
+  margin-bottom: 2.4rem;
+  position: relative;
+}
+
+.fieldpayment.active {
+  border: 1.5px solid #d87d4a;
+  transition: border 0.2s;
+  grid-column: 2/3;
+  margin-bottom: 2.4rem;
+  position: relative;
+}
+
+.fieldpayment input {
+  margin-bottom: 1.6rem;
+  position: absolute;
+  left: 0.5rem;
+  top: 2.2rem;
+}
+
+.form label {
+  font-weight: 700;
+  font-family: inherit;
+  line-height: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.fieldpayment,
+.fieldlong input,
+.fieldeven input,
+.fieldodd input {
+  height: 5.6rem;
+  border-radius: 8px;
+  border: 1px solid #cfcfcf;
+  background-color: #ffffff;
+  outline: none;
+  padding: 1.8rem 2.4rem;
+}
+
+.fieldlong input:focus-within,
+.fieldeven input:focus-within,
+.fieldodd input:focus-within {
+  border: 1.5px solid #d87d4a;
+  transition: border 0.2s;
+}
+
+.fieldpayment,
+.fieldlong input::placeholder,
+.fieldeven input::placeholder,
+.fieldodd input::placeholder {
+  font-family: inherit;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.91rem;
+  letter-spacing: -0.25px;
+  color: #000000;
+  opacity: 0.4;
 }
