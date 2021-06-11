@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { CartContext } from "../../store/CartProvider";
 import { firstWord } from "../../helpers/helpers";
 import classes from "./Summary.module.css";
-import Button from "../../components/UI/Button";
 
 const Summary = ({ onButtonActive }) => {
   const cartCtx = useContext(CartContext);

@@ -62,11 +62,7 @@ export async function checkoutInformation(info) {
     },
   });
 
-  const data = await response.json();
-
   if (!response.ok) {
     throw new Error("Could not submit your order");
   }
-
-  return null;
 }

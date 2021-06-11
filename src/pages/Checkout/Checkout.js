@@ -7,7 +7,6 @@ import Form from "../../components/Form/Form";
 import Summary from "../../components/Summary/Summary";
 
 const Checkout = () => {
-  const [formData, setFormData] = useState("");
   const [formValid, setFormValid] = useState(false);
 
   const submitCheckoutHandler = (event) => {
