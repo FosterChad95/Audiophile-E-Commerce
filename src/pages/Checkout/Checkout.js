@@ -12,6 +12,8 @@ const Checkout = () => {
 
   const submitCheckoutHandler = (event) => {
     if (!formValid) return;
+
+    console.log(event);
   };
 
   const validateFormHandler = (event) => {
@@ -27,7 +29,10 @@ const Checkout = () => {
         <Link to={`/home`} className={classes.back}>
           &larr; &nbsp; Go Back
         </Link>
-        <Form onFormValid={validateFormHandler} />
+        <Form
+          onFormValid={validateFormHandler}
+          onFormSubmit={submitCheckoutHandler}
+        />
         <Summary onSubmit={submitCheckoutHandler} onButtonActive={!formValid} />
       </div>
       <Footer />

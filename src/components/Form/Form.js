@@ -3,7 +3,7 @@ import classes from "./Form.module.css";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import { ReactComponent as ReactLogo } from "../../assets/shared/desktop/payment.svg";
 
-const Form = ({ onFormValid }) => {
+const Form = ({ onFormValid, onFormSubmit }) => {
   const [active, setActive] = useState(1);
 
   const [name, setName] = useState("");
@@ -25,8 +25,6 @@ const Form = ({ onFormValid }) => {
   const [cardIsValid, setCardIsValid] = useState(true);
   const [expirationIsValid, setExpirationIsValid] = useState(true);
   const [cvvIsValid, setCvvIsValid] = useState(true);
-
-  const [formData, setFormData] = useState("");
 
   const valueChangeHandler = (event) => {
     switch (event.target.name) {
@@ -76,6 +74,23 @@ const Form = ({ onFormValid }) => {
     }
   };
 
+  const submitFormHandler = (event) => {
+    event.preventDefault();
+
+    onFormSubmit({
+      name,
+      email,
+      phone,
+      address,
+      zip,
+      country,
+      region,
+      card: card ? card : "",
+      expiration: expiration ? expiration : "",
+      cvv: cvv ? cvv : "",
+    });
+  };
+
   if (
     nameIsValid &&
     emailIsValid &&
@@ -99,7 +114,7 @@ const Form = ({ onFormValid }) => {
 
   return (
     <>
-      <form className={classes.form}>
+      <form onSubmit={submitFormHandler} id="checkout" className={classes.form}>
         <h1>Checkout</h1>
         <section className={classes.section}>
           <h3>Billing Details</h3>

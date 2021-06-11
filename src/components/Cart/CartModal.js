@@ -89,7 +89,11 @@ const CartModal = () => {
           <h2>{`$ ${cartCtx.totalPrice.toLocaleString("en-US")}`}</h2>
         </div>
 
-        <Button className={classes.checkoutBtn} to="/checkout">
+        <Button
+          onClick={() => cartCtx.toggleCart()}
+          className={classes.checkoutBtn}
+          to="/checkout"
+        >
           Checkout
         </Button>
       </ModalOverlay>

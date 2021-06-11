@@ -4,7 +4,7 @@ import { firstWord } from "../../helpers/helpers";
 import classes from "./Summary.module.css";
 import Button from "../../components/UI/Button";
 
-const Summary = ({ onSubmit, onButtonActive }) => {
+const Summary = ({ onButtonActive }) => {
   const cartCtx = useContext(CartContext);
 
   const shippingPrice = (cartCtx.totalPrice / 10).toFixed(0);
@@ -45,14 +45,15 @@ const Summary = ({ onSubmit, onButtonActive }) => {
             <h3>{`$ ${cartCtx.totalPrice + +shippingPrice}`}</h3>
           </div>
         </div>
-        <Button
-          onClick={() => onSubmit(true)}
+        <button
           className={classes.checkoutBtn}
-          to="/checkout"
           disabled={onButtonActive}
+          form="checkout"
+          value="Submit"
+          type="submit"
         >
-          CONTINUE
-        </Button>
+          Continue
+        </button>
       </div>
     </>
   );

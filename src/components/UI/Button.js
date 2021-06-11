@@ -10,6 +10,7 @@ const Button = (props) => {
         type={props.type || "button"}
         className={props.className || classes.button}
         disabled={props.disabled || false}
+        form={props.form || ""}
       >
         {props.children}
       </button>
