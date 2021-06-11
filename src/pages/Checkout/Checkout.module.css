@@ -9,7 +9,7 @@
   grid-column: 1/-1;
   background-color: #f2f2f2;
   display: grid;
-  grid-template-columns: 16.5rem repeat(3, 1fr) 16.5rem;
+  grid-template-columns: 1fr 73rem 35rem 1fr;
   grid-column-gap: 3rem;
 }
 

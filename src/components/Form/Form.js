@@ -1,13 +1,9 @@
-import React, { useState, useRef, useReducer } from "react";
+import React, { useState } from "react";
 import classes from "./Form.module.css";
-import {
-  CountryDropdown,
-  RegionDropdown,
-  CountryRegionData,
-} from "react-country-region-selector";
+import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import { ReactComponent as ReactLogo } from "../../assets/shared/desktop/payment.svg";
 
-const Form = () => {
+const Form = ({ onFormValid }) => {
   const [active, setActive] = useState(1);
 
   const [name, setName] = useState("");
@@ -26,32 +22,34 @@ const Form = () => {
   const [phoneIsValid, setPhoneIsValid] = useState(true);
   const [addressIsValid, setAddressIsValid] = useState(true);
   const [zipIsValid, setZipIsValid] = useState(true);
-  const [countryIsValid, setCountryIsValid] = useState(true);
-  const [regionIsValid, setRegionIsValid] = useState(true);
   const [cardIsValid, setCardIsValid] = useState(true);
   const [expirationIsValid, setExpirationIsValid] = useState(true);
   const [cvvIsValid, setCvvIsValid] = useState(true);
 
-  const [formIsValid, setFormIsValid] = useState(false);
+  const [formData, setFormData] = useState("");
 
   const valueChangeHandler = (event) => {
-    let valid;
     switch (event.target.name) {
       case "name":
         setName(event.target.value.trim());
-        setNameIsValid(event.target.value.trim().length > 1);
+        setNameIsValid(event.target.value.trim() !== "");
         break;
       case "email":
         setEmail(event.target.value.trim());
-        setEmailIsValid(event.target.value.includes("@"));
+        setEmailIsValid(
+          event.target.value.includes("@") && event.target.value.trim() !== ""
+        );
         break;
       case "phone":
         setPhone(event.target.value.trim());
-        setPhoneIsValid(event.target.value.trim().length > 9);
+        setPhoneIsValid(
+          event.target.value.trim().length === 10 ||
+            event.target.value.trim().length === 11
+        );
         break;
       case "address":
         setAddress(event.target.value.trim());
-        setAddressIsValid(event.target.value.trim().length > 0);
+        setAddressIsValid(event.target.value.trim() !== "");
         break;
       case "zip-code":
         setZip(event.target.value.trim());
@@ -68,21 +66,40 @@ const Form = () => {
         setExpiration(event.target.value.trim());
         setExpirationIsValid(regex.test(event.target.value.trim()));
         break;
-      case "card-cvv-number ":
+      case "card-cvv-number":
         setCvv(event.target.value.trim());
         setCvvIsValid(event.target.value.trim().length === 3);
         break;
 
       default:
-        setFormIsValid(false);
+        onFormValid(false);
     }
   };
 
-  const submitFormHandler = () => {};
+  if (
+    nameIsValid &&
+    emailIsValid &&
+    phoneIsValid &&
+    addressIsValid &&
+    zipIsValid &&
+    cardIsValid &&
+    cvvIsValid &&
+    expirationIsValid &&
+    name &&
+    email &&
+    phone &&
+    address &&
+    zip &&
+    (active === 1 ? cvv && card && expiration : true)
+  ) {
+    onFormValid(true);
+  } else {
+    onFormValid(false);
+  }
 
   return (
     <>
-      <form onSubmit={submitFormHandler} className={classes.form}>
+      <form className={classes.form}>
         <h1>Checkout</h1>
         <section className={classes.section}>
           <h3>Billing Details</h3>
@@ -92,6 +109,7 @@ const Form = () => {
             }`}
           >
             <label htmlFor="name">Name</label>
+            {!nameIsValid && <h5>Wrong Format</h5>}
             <input
               type="text"
               name="name"
@@ -105,6 +123,7 @@ const Form = () => {
             }`}
           >
             <label htmlFor="email">Email Address</label>
+            {!emailIsValid && <h5>Wrong Format</h5>}
             <input
               type="email"
               name="email"
@@ -118,6 +137,7 @@ const Form = () => {
             }`}
           >
             <label htmlFor="phone">Phone Number</label>
+            {!phoneIsValid && <h5>Wrong Format</h5>}
             <input
               type="text"
               name="phone"
@@ -134,6 +154,7 @@ const Form = () => {
             }`}
           >
             <label htmlFor="address">Address</label>
+            {!addressIsValid && <h5>Wrong Format</h5>}
             <input
               type="text"
               name="address"
@@ -148,6 +169,7 @@ const Form = () => {
             }`}
           >
             <label htmlFor="zip-code">ZIP Code</label>
+            {!zipIsValid && <h5>Wrong Format</h5>}
             <input
               type="text"
               name="zip-code"
@@ -212,6 +234,7 @@ const Form = () => {
                 }`}
               >
                 <label htmlFor="credit-card">Credit Card Number</label>
+                {!cardIsValid && <h5>Wrong Format</h5>}
                 <input
                   type="tel"
                   placeholder="xxxx xxxx xxxx xxxx"
@@ -227,6 +250,7 @@ const Form = () => {
                 <label htmlFor="card-expiration-date">
                   Card Expiration Date
                 </label>
+                {!expirationIsValid && <h5>Wrong Format</h5>}
                 <input
                   type="text"
                   name="card-expiration-date"
@@ -240,6 +264,7 @@ const Form = () => {
                 }`}
               >
                 <label htmlFor="card-cvv-number">Card CVV Number</label>
+                {!cvvIsValid && <h5>Wrong Format</h5>}
                 <input
                   type="text"
                   name="card-cvv-number"

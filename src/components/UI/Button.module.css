@@ -18,3 +18,13 @@
   background-color: #fbaf85;
   transition: background-color 0.3s;
 }
+
+button:disabled,
+button[disabled] {
+  cursor: not-allowed;
+  background-color: grey;
+}
+
+button:disabled:hover {
+  background-color: grey;
+}

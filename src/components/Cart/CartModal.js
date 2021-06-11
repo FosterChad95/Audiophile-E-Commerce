@@ -2,11 +2,7 @@ import React, { useContext } from "react";
 import classes from "./CartModal.module.css";
 import { CartContext } from "../../store/CartProvider";
 import Button from "../UI/Button";
-
-const firstWord = (name) => {
-  const ind = name.indexOf(" ");
-  return name.substring(0, ind);
-};
+import { firstWord } from "../../helpers/helpers";
 
 const BackDrop = () => {
   const cartCtx = useContext(CartContext);
