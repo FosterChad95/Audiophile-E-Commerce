@@ -1,6 +1,7 @@
 .form {
   display: grid;
   padding: 5.4rem 4.8rem;
+  width: 73rem;
   grid-column: 2/4;
   background-color: white;
   border-radius: 10px;
@@ -99,6 +100,34 @@
   margin-bottom: 1rem;
 }
 
+.fieldCountry {
+  height: 5.6rem;
+  border-radius: 8px;
+  border: 1px solid #cfcfcf;
+  background-color: #ffffff;
+  outline: none;
+  padding: 1.8rem 2.4rem;
+  grid-column: 2/3;
+  margin-top: 2.5rem;
+}
+
+.fieldCountry:focus-within,
+.fieldCity:focus-within {
+  border: 1.5px solid #d87d4a;
+  transition: border 0.2s;
+}
+
+.fieldCity {
+  height: 5.6rem;
+  border-radius: 8px;
+  border: 1px solid #cfcfcf;
+  background-color: #ffffff;
+  outline: none;
+  padding: 1.8rem 2.4rem;
+  grid-column: 1/2;
+  margin-bottom: 0;
+}
+
 .fieldpayment,
 .fieldlong input,
 .fieldeven input,
@@ -146,4 +175,15 @@
   opacity: 0.5;
   grid-column: 2/3;
   margin-left: 3.2rem;
+}
+
+.fieldlong.invalid input,
+.fieldeven.invalid input,
+.fieldodd.invalid input {
+  height: 5.6rem;
+  border-radius: 8px;
+  border: 2px solid red;
+  background-color: #ffffff;
+  outline: none;
+  padding: 1.8rem 2.4rem;
 }
