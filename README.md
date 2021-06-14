@@ -1,8 +1,12 @@
 # Overview
 
-I chose to style with CSS for this project as I wanted to showcase my CSS skills and was also developing from a Figma design. This project uses React, React Hooks , React Router and more. 
+This is a multi page website that focuses on audio gear. It is made with Firebase for the backend and can easily be scaled for more products. I chose to style with CSS for this project as I wanted to showcase my CSS skills and was also developing from a Figma design so everything needed to be very custom. This project uses React, React Hooks , React Router and more. 
 
-Includes custom form validation as well as adding/removing from cart and a smooth checkout process.
+Includes custom form validation as well as adding/removing from cart and a smooth checkout process. 
+
+# Testing Payment 
+
+Stripe was integrated for payment functionality. For testing purposes please enter 4242 4242 4242 4242 as the credit card number.
 
 
 
