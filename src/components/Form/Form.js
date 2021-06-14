@@ -1,11 +1,58 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { CartContext } from "../../store/CartProvider";
+import { Link } from "react-router-dom";
 import classes from "./Form.module.css";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import { ReactComponent as ReactLogo } from "../../assets/shared/desktop/payment.svg";
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 
-const Form = ({ onFormValid, onFormSubmit }) => {
+const CARD_OPTIONS = {
+  iconStyle: "solid",
+  style: {
+    base: {
+      iconColor: "#d87d4a",
+      color: "black",
+      fontWeight: 500,
+      fontFamily: "inherit",
+      fontSize: "16px",
+
+      ":-webkit-autofill": {
+        color: "#fce883",
+      },
+      "::placeholder": {
+        color: "rgba(0,0,0,.5)",
+      },
+    },
+    invalid: {
+      iconColor: "red",
+      color: "red",
+    },
+  },
+  hidePostalCode: true,
+};
+
+const ResetButton = ({ onClick }) => (
+  <Link to="/" type="button" className="ResetButton" onClick={onClick}>
+    <svg width="32px" height="32px" viewBox="0 0 32 32">
+      <path
+        fill="#d87d4a"
+        d="M15,7.05492878 C10.5000495,7.55237307 7,11.3674463 7,16 C7,20.9705627 11.0294373,25 16,25 C20.9705627,25 25,20.9705627 25,16 C25,15.3627484 24.4834055,14.8461538 23.8461538,14.8461538 C23.2089022,14.8461538 22.6923077,15.3627484 22.6923077,16 C22.6923077,19.6960595 19.6960595,22.6923077 16,22.6923077 C12.3039405,22.6923077 9.30769231,19.6960595 9.30769231,16 C9.30769231,12.3039405 12.3039405,9.30769231 16,9.30769231 L16,12.0841673 C16,12.1800431 16.0275652,12.2738974 16.0794108,12.354546 C16.2287368,12.5868311 16.5380938,12.6540826 16.7703788,12.5047565 L22.3457501,8.92058924 L22.3457501,8.92058924 C22.4060014,8.88185624 22.4572275,8.83063012 22.4959605,8.7703788 C22.6452866,8.53809377 22.5780351,8.22873685 22.3457501,8.07941076 L22.3457501,8.07941076 L16.7703788,4.49524351 C16.6897301,4.44339794 16.5958758,4.41583275 16.5,4.41583275 C16.2238576,4.41583275 16,4.63969037 16,4.91583275 L16,7 L15,7 L15,7.05492878 Z M16,32 C7.163444,32 0,24.836556 0,16 C0,7.163444 7.163444,0 16,0 C24.836556,0 32,7.163444 32,16 C32,24.836556 24.836556,32 16,32 Z"
+      />
+    </svg>
+  </Link>
+);
+
+const CardField = ({ onChange }) => (
+  <div className={classes.cardrow}>
+    <CardElement options={CARD_OPTIONS} onChange={onChange} />
+  </div>
+);
+
+const Form = ({ onFormValid, onProcessing }) => {
+  const cartCtx = useContext(CartContext);
+  //Button State
   const [active, setActive] = useState(1);
-
+  //Form State
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -13,18 +60,19 @@ const Form = ({ onFormValid, onFormSubmit }) => {
   const [zip, setZip] = useState("");
   const [country, setCountry] = useState("");
   const [region, setRegion] = useState("");
-  const [card, setCard] = useState("");
-  const [expiration, setExpiration] = useState("");
-  const [cvv, setCvv] = useState("");
 
   const [nameIsValid, setNameIsValid] = useState(true);
   const [emailIsValid, setEmailIsValid] = useState(true);
   const [phoneIsValid, setPhoneIsValid] = useState(true);
   const [addressIsValid, setAddressIsValid] = useState(true);
   const [zipIsValid, setZipIsValid] = useState(true);
-  const [cardIsValid, setCardIsValid] = useState(true);
-  const [expirationIsValid, setExpirationIsValid] = useState(true);
-  const [cvvIsValid, setCvvIsValid] = useState(true);
+
+  //Stripe State
+  const elements = useElements();
+  const stripe = useStripe();
+  const [error, setError] = useState(null);
+  const [paymentMethod, setPaymentMethod] = useState(null);
+  const [cardComplete, setCardComplete] = useState(false);
 
   const valueChangeHandler = (event) => {
     switch (event.target.name) {
@@ -53,42 +101,62 @@ const Form = ({ onFormValid, onFormSubmit }) => {
         setZip(event.target.value.trim());
         setZipIsValid(event.target.value.trim().length === 5);
         break;
-      case "credit-card":
-        setCard(event.target.value.trim());
-        setCardIsValid(event.target.value.trim().length === 16);
-        break;
-      case "card-expiration-date":
-        const regex = new RegExp(
-          /^((0[1-9])|(1[0-2]))\/((2009)|(20[1-2][0-9]))$/
-        );
-        setExpiration(event.target.value.trim());
-        setExpirationIsValid(regex.test(event.target.value.trim()));
-        break;
-      case "card-cvv-number":
-        setCvv(event.target.value.trim());
-        setCvvIsValid(event.target.value.trim().length === 3);
-        break;
 
       default:
         onFormValid(false);
     }
   };
 
-  const submitFormHandler = (event) => {
+  const reset = () => {
+    setError(null);
+    onProcessing(false);
+    setPaymentMethod(null);
+    setName("");
+    setEmail("");
+    setPhone("");
+    setAddress("");
+    setZip("");
+    setCountry("");
+    setRegion("");
+    cartCtx.clearCart();
+  };
+
+  const submitFormHandler = async (event) => {
     event.preventDefault();
 
-    onFormSubmit({
-      name,
-      email,
-      phone,
-      address,
-      zip,
-      country,
-      region,
-      card: card ? card : "",
-      expiration: expiration ? expiration : "",
-      cvv: cvv ? cvv : "",
-    });
+    if (!stripe || !elements) return;
+
+    if (error) {
+      elements.getElement("card").focus();
+      return;
+    }
+
+    if (cardComplete) {
+      onProcessing(true);
+    }
+
+    const payload =
+      active === 2
+        ? "Cash"
+        : await stripe.createPaymentMethod({
+            type: "card",
+            card: elements.getElement(CardElement),
+            billing_details: {
+              name: name,
+              email: email,
+              phone: phone,
+            },
+          });
+
+    onProcessing(false);
+
+    if (payload.error) {
+      setError(payload.error);
+    } else {
+      active === 2
+        ? setPaymentMethod(payload)
+        : setPaymentMethod(payload.paymentMethod);
+    }
   };
 
   if (
@@ -97,22 +165,33 @@ const Form = ({ onFormValid, onFormSubmit }) => {
     phoneIsValid &&
     addressIsValid &&
     zipIsValid &&
-    cardIsValid &&
-    cvvIsValid &&
-    expirationIsValid &&
     name &&
     email &&
     phone &&
     address &&
     zip &&
-    (active === 1 ? cvv && card && expiration : true)
+    (active === 1 ? cardComplete : true)
   ) {
     onFormValid(true);
   } else {
     onFormValid(false);
   }
 
-  return (
+  return paymentMethod ? (
+    <>
+      <div className={classes.backdrop}></div>
+      <div className={classes.modal}>
+        <div className={classes.resultTitle} role="alert">
+          Payment successful
+        </div>
+        <div className={classes.resultMessage}>
+          Thanks for your order. No money was charged, but we generated a
+          PaymentMethod: {paymentMethod.id ? paymentMethod.id : paymentMethod}
+        </div>
+        <ResetButton onClick={reset} />
+      </div>
+    </>
+  ) : (
     <>
       <form onSubmit={submitFormHandler} id="checkout" className={classes.form}>
         <h1>Checkout</h1>
@@ -130,6 +209,7 @@ const Form = ({ onFormValid, onFormSubmit }) => {
               name="name"
               placeholder="Alexei Ward"
               onChange={valueChangeHandler}
+              required
             />
           </div>
           <div
@@ -144,6 +224,7 @@ const Form = ({ onFormValid, onFormSubmit }) => {
               name="email"
               placeholder="alexei@gmail.com"
               onChange={valueChangeHandler}
+              required
             />
           </div>
           <div
@@ -158,6 +239,7 @@ const Form = ({ onFormValid, onFormSubmit }) => {
               name="phone"
               placeholder="+1202-555-0136"
               onChange={valueChangeHandler}
+              required
             />
           </div>
         </section>
@@ -176,6 +258,7 @@ const Form = ({ onFormValid, onFormSubmit }) => {
               id="long"
               placeholder="1137 Williams Avenue"
               onChange={valueChangeHandler}
+              required
             />
           </div>
           <div
@@ -190,6 +273,7 @@ const Form = ({ onFormValid, onFormSubmit }) => {
               name="zip-code"
               placeholder="10001"
               onChange={valueChangeHandler}
+              required
             />
           </div>
 
@@ -243,48 +327,12 @@ const Form = ({ onFormValid, onFormSubmit }) => {
           </div>
           {active === 1 ? (
             <>
-              <div
-                className={`${classes.fieldodd} ${
-                  !cardIsValid ? classes.invalid : ""
-                }`}
-              >
-                <label htmlFor="credit-card">Credit Card Number</label>
-                {!cardIsValid && <h5>Wrong Format</h5>}
-                <input
-                  type="tel"
-                  placeholder="xxxx xxxx xxxx xxxx"
-                  name="credit-card"
-                  onChange={valueChangeHandler}
-                />
-              </div>
-              <div
-                className={`${classes.fieldeven} ${
-                  !expirationIsValid ? classes.invalid : ""
-                }`}
-              >
-                <label htmlFor="card-expiration-date">
-                  Card Expiration Date
-                </label>
-                {!expirationIsValid && <h5>Wrong Format</h5>}
-                <input
-                  type="text"
-                  name="card-expiration-date"
-                  placeholder="10/2021"
-                  onChange={valueChangeHandler}
-                />
-              </div>
-              <div
-                className={`${classes.fieldodd} ${
-                  !cvvIsValid ? classes.invalid : ""
-                }`}
-              >
-                <label htmlFor="card-cvv-number">Card CVV Number</label>
-                {!cvvIsValid && <h5>Wrong Format</h5>}
-                <input
-                  type="text"
-                  name="card-cvv-number"
-                  placeholder="456"
-                  onChange={valueChangeHandler}
+              <div className={classes.cardgroup}>
+                <CardField
+                  onChange={(e) => {
+                    setError(e.error);
+                    setCardComplete(e.complete);
+                  }}
                 />
               </div>
             </>

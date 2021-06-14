@@ -205,3 +205,54 @@
   font-size: 1.2rem;
   letter-spacing: -0.21px;
 }
+
+.cardgroup {
+  grid-column: 1/-1;
+  margin: 0 15px 20px;
+  padding: 1rem;
+  border-style: none;
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 20;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.modal {
+  position: fixed;
+  top: 25%;
+  left: 50%;
+  width: 40rem;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  z-index: 30;
+  animation: slide-down 300ms ease-out forwards;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.resultTitle {
+  font-weight: 700;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.resultMessage {
+  font-weight: 500;
+  font-size: 1.5rem;
+  font-family: inherit;
+  padding: 1rem 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}

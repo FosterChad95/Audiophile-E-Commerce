@@ -52,17 +52,3 @@ export async function getSingleProduct(product) {
   const filtered = items.filter((el) => el.name === product);
   return filtered;
 }
-
-export async function checkoutInformation(info) {
-  const response = await fetch(`${FIREBASE_DOMAIN}/customerData.json`, {
-    method: "POST",
-    body: JSON.stringify(info),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-
-  if (!response.ok) {
-    throw new Error("Could not submit your order");
-  }
-}

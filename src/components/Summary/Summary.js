@@ -2,8 +2,9 @@ import React, { useContext } from "react";
 import { CartContext } from "../../store/CartProvider";
 import { firstWord } from "../../helpers/helpers";
 import classes from "./Summary.module.css";
+import LoadingSpinner from "../UI/LoadingSpinner";
 
-const Summary = ({ onButtonActive }) => {
+const Summary = ({ onButtonActive, onProcessing }) => {
   const cartCtx = useContext(CartContext);
 
   const shippingPrice = (cartCtx.totalPrice / 10).toFixed(0);
@@ -44,15 +45,18 @@ const Summary = ({ onButtonActive }) => {
             <h3>{`$ ${cartCtx.totalPrice + +shippingPrice}`}</h3>
           </div>
         </div>
-        <button
-          className={classes.checkoutBtn}
-          disabled={onButtonActive}
-          form="checkout"
-          value="Submit"
-          type="submit"
-        >
-          Continue
-        </button>
+        {onProcessing ? (
+          <LoadingSpinner />
+        ) : (
+          <button
+            className={classes.checkoutBtn}
+            disabled={onButtonActive}
+            form="checkout"
+            type="submit"
+          >
+            Continue
+          </button>
+        )}
       </div>
     </>
   );
