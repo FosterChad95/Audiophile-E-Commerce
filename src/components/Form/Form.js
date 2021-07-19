@@ -87,11 +87,9 @@ const Form = ({ onFormValid, onProcessing }) => {
         );
         break;
       case "phone":
+        const reg = /^(\([0-9]{3}\)|[0-9]{3}-)[0-9]{3}-[0-9]{4}$/;
         setPhone(event.target.value.trim());
-        setPhoneIsValid(
-          event.target.value.trim().length === 10 ||
-            event.target.value.trim().length === 11
-        );
+        setPhoneIsValid(event.target.value.match(reg));
         break;
       case "address":
         setAddress(event.target.value.trim());
